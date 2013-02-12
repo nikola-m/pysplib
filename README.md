@@ -18,11 +18,15 @@ This was all done in order to create a Python extension module.
 It was achieved in a following way:  
   
   
-To create a signature file:  
-f2py -m pysplib -h splib.fpy splib.f fftw3.f hermite_form_to_complex_conj.f  
+To create a signature file: 
+``` 
+f2py -m pysplib -h splib.fpy splib.f fftw3.f hermite_form_to_complex_conj.f
+```  
 
 And second step, to create extension module:  
+```
 f2py -c -m --fcompiler=gnu95 pysplib splib.f hermite_form_to_complex_conj.f -lfftw3  
+```
   
 I'm using gfortran, therefore I use --fcompiler=gnu95 switch.  
 
