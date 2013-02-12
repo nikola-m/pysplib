@@ -1,11 +1,14 @@
-##########################################################
 This is pysplib - a library for spectral methods.
-##########################################################
+=========================================================
 
+A Python library for spectral methods
+
+
+--------------
 Fortran code on which it is based is written by Daniele Funaro in 1994.
-
 You may find the original source code at:
 cdm.unimo.it/home/matematica/funaro.daniele/splib.txt
+
 
 I have removed the calls to FFT subroutines from the NAG library
 and replaced them by calls to FFTW3 (http://www.fftw.org/).
@@ -16,6 +19,7 @@ of n data values, and vice-versa.
 This was all done in order to create a Python extension module. 
 It was achieved in a following way:
 
+
 To create a signature file:
 f2py -m pysplib -h splib.fpy splib.f fftw3.f hermite_form_to_complex_conj.f
 
@@ -24,12 +28,13 @@ f2py -c -m --fcompiler=gnu95 pysplib splib.f hermite_form_to_complex_conj.f -lff
 
 I'm using gfortran, therefore I use --fcompiler=gnu95 switch.
 
+
 After doing this you get splib.so file.
 
 Then you may use splib in Python:
->>> import splib
->>> splib.gammaf(15)
-87178291200.0
+  import splib
+  splib.gammaf(15)
+  87178291200.0
 ...
 
 For question write to:
