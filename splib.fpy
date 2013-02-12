@@ -1,0 +1,595 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module splib ! in 
+    interface  ! in :splib
+        subroutine gammaf(x,gx) ! in :splib:splib.f
+            double precision intent(in) :: x
+            double precision intent(out) :: gx
+        end subroutine gammaf
+        subroutine vajapo(n,a,b,x,y,dy,d2y) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision intent(in) :: a
+            double precision intent(in) :: b
+            double precision intent(in) :: x
+            double precision intent(out) :: y
+            double precision intent(out) :: dy
+            double precision intent(out) :: d2y
+        end subroutine vajapo
+        subroutine valepo(n,x,y,dy,d2y) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision intent(in) :: x
+            double precision intent(out) :: y
+            double precision intent(out) :: dy
+            double precision intent(out) :: d2y
+        end subroutine valepo
+        subroutine vachpo(n,x,y,dy,d2y) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision intent(in) :: x
+            double precision intent(out) :: y
+            double precision intent(out) :: dy
+            double precision intent(out) :: d2y
+        end subroutine vachpo
+        subroutine valapo(n,a,x,y,dy,d2y) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision intent(in) :: a
+            double precision intent(in) :: x
+            double precision intent(out) :: y
+            double precision intent(out) :: dy
+            double precision intent(out) :: d2y
+        end subroutine valapo
+        subroutine vahepo(n,x,y,dy,d2y) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision intent(in) :: x
+            double precision intent(out) :: y
+            double precision intent(out) :: dy
+            double precision intent(out) :: d2y
+        end subroutine vahepo
+        subroutine valasf(n,a,x,y,dy) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision intent(in) :: a
+            double precision intent(in) :: x
+            double precision intent(out) :: y
+            double precision intent(out) :: dy
+        end subroutine valasf
+        subroutine vahesf(n,x,y,dy) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision intent(in) :: x
+            double precision intent(out) :: y
+            double precision intent(out) :: dy
+        end subroutine vahesf
+        subroutine zejaga(n,a,b,cs,dz) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision intent(in) :: a
+            double precision intent(in) :: b
+            double precision dimension(n),intent(out),depend(n) :: cs
+            double precision dimension(n),intent(out),depend(n) :: dz
+        end subroutine zejaga
+        subroutine zelega(n,cs,dz) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision dimension(n),intent(out),depend(n) :: cs
+            double precision dimension(n),intent(out),depend(n) :: dz
+        end subroutine zelega
+        subroutine zechga(n,cs,dz) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision dimension(n),intent(out),depend(n) :: cs
+            double precision dimension(n),intent(out),depend(n) :: dz
+        end subroutine zechga
+        subroutine zelaga(n,a,cs,dz) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision intent(in) :: a
+            double precision dimension(1),intent(out) :: cs
+            double precision dimension(1),intent(out) :: dz
+        end subroutine zelaga
+        subroutine zehega(n,cs,dz) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision dimension(n),intent(out),depend(n) :: cs
+            double precision dimension(n),intent(out),depend(n) :: dz
+        end subroutine zehega
+        subroutine zejagl(n,a,b,et,vn) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision intent(in) :: a
+            double precision intent(in) :: b
+            double precision dimension(n + 1),intent(out),depend(n) :: et
+            double precision dimension(n + 1),intent(out),depend(n) :: vn
+        end subroutine zejagl
+        subroutine zelegl(n,et,vn) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision dimension(n + 1),intent(out),depend(n) :: et
+            double precision dimension(n + 1),intent(out),depend(n) :: vn
+        end subroutine zelegl
+        subroutine zechgl(n,et) ! in :splib:splib.f
+            integer intent(in) :: n
+            double precision dimension(n + 1),intent(out),depend(n) :: et
+        end subroutine zechgl
+        subroutine zelagr(n,a,et,vn) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision dimension(*) :: et
+            double precision dimension(*) :: vn
+        end subroutine zelagr
+        subroutine wejaga(n,a,b,cs,dz,we) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision :: b
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: dz
+            double precision dimension(1) :: we
+        end subroutine wejaga
+        subroutine welega(n,cs,dz,we) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: dz
+            double precision dimension(1) :: we
+        end subroutine welega
+        subroutine wechga(n,we) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(1) :: we
+        end subroutine wechga
+        subroutine welaga(n,a,cs,we) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: we
+        end subroutine welaga
+        subroutine wehega(n,cs,we) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: we
+        end subroutine wehega
+        subroutine wejagl(n,a,b,et,wt) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision :: b
+            double precision dimension(*) :: et
+            double precision dimension(*) :: wt
+        end subroutine wejagl
+        subroutine welegl(n,et,vn,wt) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: et
+            double precision dimension(*) :: vn
+            double precision dimension(*) :: wt
+        end subroutine welegl
+        subroutine wechgl(n,wt) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: wt
+        end subroutine wechgl
+        subroutine welagr(n,a,et,wt) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision dimension(*) :: et
+            double precision dimension(*) :: wt
+        end subroutine welagr
+        subroutine wechcc(n,wk) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: wk
+        end subroutine wechcc
+        subroutine injaga(n,a,b,cs,dz,qz,x,qx) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision :: b
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: dz
+            double precision dimension(1) :: qz
+            double precision :: x
+            double precision :: qx
+        end subroutine injaga
+        subroutine inlega(n,cs,dz,qz,x,qx) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: dz
+            double precision dimension(1) :: qz
+            double precision :: x
+            double precision :: qx
+        end subroutine inlega
+        subroutine inchga(n,dz,qz,x,qx) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(1) :: dz
+            double precision dimension(1) :: qz
+            double precision :: x
+            double precision :: qx
+        end subroutine inchga
+        subroutine inlaga(n,a,cs,dz,qz,x,qx) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: dz
+            double precision dimension(1) :: qz
+            double precision :: x
+            double precision :: qx
+        end subroutine inlaga
+        subroutine inhega(n,cs,dz,qz,x,qx) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: dz
+            double precision dimension(1) :: qz
+            double precision :: x
+            double precision :: qx
+        end subroutine inhega
+        subroutine injagl(n,a,b,et,vn,qn,x,qx) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision :: b
+            double precision dimension(*) :: et
+            double precision dimension(*) :: vn
+            double precision dimension(*) :: qn
+            double precision :: x
+            double precision :: qx
+        end subroutine injagl
+        subroutine inlegl(n,et,vn,qn,x,qx) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: et
+            double precision dimension(*) :: vn
+            double precision dimension(*) :: qn
+            double precision :: x
+            double precision :: qx
+        end subroutine inlegl
+        subroutine inchgl(n,qn,x,qx) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: qn
+            double precision :: x
+            double precision :: qx
+        end subroutine inchgl
+        subroutine inlagr(n,a,et,vn,qn,x,qx) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision dimension(*) :: et
+            double precision dimension(*) :: vn
+            double precision dimension(*) :: qn
+            double precision :: x
+            double precision :: qx
+        end subroutine inlagr
+        subroutine nolega(n,qz,we,qi,qm) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(1) :: qz
+            double precision dimension(1) :: we
+            double precision :: qi
+            double precision :: qm
+        end subroutine nolega
+        subroutine nochga(n,dz,qz,wk,qw,qi,qm) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(1) :: dz
+            double precision dimension(1) :: qz
+            double precision dimension(*) :: wk
+            double precision :: qw
+            double precision :: qi
+            double precision :: qm
+        end subroutine nochga
+        subroutine nojagl(n,a,b,vn,qn,wt,qw,qs,qm) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision :: b
+            double precision dimension(*) :: vn
+            double precision dimension(*) :: qn
+            double precision dimension(*) :: wt
+            double precision :: qw
+            double precision :: qs
+            double precision :: qm
+        end subroutine nojagl
+        subroutine nolegl(n,vn,qn,wt,qi,qs,qm) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: vn
+            double precision dimension(*) :: qn
+            double precision dimension(*) :: wt
+            double precision :: qi
+            double precision :: qs
+            double precision :: qm
+        end subroutine nolegl
+        subroutine nochgl(n,qn,wk,qw,qi,qs,qm) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: qn
+            double precision dimension(*) :: wk
+            double precision :: qw
+            double precision :: qi
+            double precision :: qs
+            double precision :: qm
+        end subroutine nochgl
+        subroutine cojaga(n,a,b,cs,qz,we,co) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision :: b
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: qz
+            double precision dimension(1) :: we
+            double precision dimension(*) :: co
+        end subroutine cojaga
+        subroutine colega(n,cs,qz,we,co) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: qz
+            double precision dimension(1) :: we
+            double precision dimension(*) :: co
+        end subroutine colega
+        subroutine cochga(n,qz,co) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(1) :: qz
+            double precision dimension(*) :: co
+        end subroutine cochga
+        subroutine colaga(n,a,cs,qz,we,co) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: qz
+            double precision dimension(1) :: we
+            double precision dimension(*) :: co
+        end subroutine colaga
+        subroutine cohega(n,cs,qz,we,co) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: qz
+            double precision dimension(1) :: we
+            double precision dimension(*) :: co
+        end subroutine cohega
+        subroutine cojagl(n,a,b,et,vn,qn,wt,co) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision :: b
+            double precision dimension(*) :: et
+            double precision dimension(*) :: vn
+            double precision dimension(*) :: qn
+            double precision dimension(*) :: wt
+            double precision dimension(*) :: co
+        end subroutine cojagl
+        subroutine colegl(n,et,qn,wt,co) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: et
+            double precision dimension(*) :: qn
+            double precision dimension(*) :: wt
+            double precision dimension(*) :: co
+        end subroutine colegl
+        subroutine cochgl(n,qn,co) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: qn
+            double precision dimension(*) :: co
+        end subroutine cochgl
+        subroutine colagr(n,a,et,qn,wt,co) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision dimension(*) :: et
+            double precision dimension(*) :: qn
+            double precision dimension(*) :: wt
+            double precision dimension(*) :: co
+        end subroutine colagr
+        subroutine pvjaex(n,a,b,x,co,y,dy,d2y) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision :: b
+            double precision :: x
+            double precision dimension(*) :: co
+            double precision :: y
+            double precision :: dy
+            double precision :: d2y
+        end subroutine pvjaex
+        subroutine pvleex(n,x,co,y,dy,d2y) ! in :splib:splib.f
+            integer :: n
+            double precision :: x
+            double precision dimension(*) :: co
+            double precision :: y
+            double precision :: dy
+            double precision :: d2y
+        end subroutine pvleex
+        subroutine pvchex(n,x,co,y,dy,d2y) ! in :splib:splib.f
+            integer :: n
+            double precision :: x
+            double precision dimension(*) :: co
+            double precision :: y
+            double precision :: dy
+            double precision :: d2y
+        end subroutine pvchex
+        subroutine pvlaex(n,a,x,co,y,dy,d2y) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision :: x
+            double precision dimension(*) :: co
+            double precision :: y
+            double precision :: dy
+            double precision :: d2y
+        end subroutine pvlaex
+        subroutine pvheex(n,x,co,y,dy,d2y) ! in :splib:splib.f
+            integer :: n
+            double precision :: x
+            double precision dimension(*) :: co
+            double precision :: y
+            double precision :: dy
+            double precision :: d2y
+        end subroutine pvheex
+        subroutine nojaex(n,a,b,co,qw) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision :: b
+            double precision dimension(*) :: co
+            double precision :: qw
+        end subroutine nojaex
+        subroutine noleex(n,co,qi) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: co
+            double precision :: qi
+        end subroutine noleex
+        subroutine nochex(n,co,qw,qi) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: co
+            double precision :: qw
+            double precision :: qi
+        end subroutine nochex
+        subroutine nolaex(n,a,co,qw) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision dimension(*) :: co
+            double precision :: qw
+        end subroutine nolaex
+        subroutine noheex(n,co,qw) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: co
+            double precision :: qw
+        end subroutine noheex
+        subroutine cojade(n,g,co,cd,cd2) ! in :splib:splib.f
+            integer :: n
+            double precision :: g
+            double precision dimension(*) :: co
+            double precision dimension(*) :: cd
+            double precision dimension(*) :: cd2
+        end subroutine cojade
+        subroutine colede(n,co,cd,cd2) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: co
+            double precision dimension(*) :: cd
+            double precision dimension(*) :: cd2
+        end subroutine colede
+        subroutine cochde(n,co,cd,cd2) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: co
+            double precision dimension(*) :: cd
+            double precision dimension(*) :: cd2
+        end subroutine cochde
+        subroutine colade(n,co,cd,cd2) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: co
+            double precision dimension(*) :: cd
+            double precision dimension(*) :: cd2
+        end subroutine colade
+        subroutine cohede(n,co,cd,cd2) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: co
+            double precision dimension(*) :: cd
+            double precision dimension(*) :: cd2
+        end subroutine cohede
+        subroutine dejaga(n,a,b,cs,dz,qz,dqz) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision :: b
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: dz
+            double precision dimension(1) :: qz
+            double precision dimension(1) :: dqz
+        end subroutine dejaga
+        subroutine delaga(n,a,cs,qz,dqz) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: qz
+            double precision dimension(1) :: dqz
+        end subroutine delaga
+        subroutine dehega(n,cs,qz,dqz) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(1) :: cs
+            double precision dimension(1) :: qz
+            double precision dimension(1) :: dqz
+        end subroutine dehega
+        subroutine dejagl(n,a,b,et,vn,qn,dqn) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision :: b
+            double precision dimension(*) :: et
+            double precision dimension(*) :: vn
+            double precision dimension(*) :: qn
+            double precision dimension(*) :: dqn
+        end subroutine dejagl
+        subroutine delegl(n,et,vn,qn,dqn) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: et
+            double precision dimension(*) :: vn
+            double precision dimension(*) :: qn
+            double precision dimension(*) :: dqn
+        end subroutine delegl
+        subroutine dechgl(n,et,qn,dqn) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: et
+            double precision dimension(*) :: qn
+            double precision dimension(*) :: dqn
+        end subroutine dechgl
+        subroutine delagr(n,a,et,qn,dqn) ! in :splib:splib.f
+            integer :: n
+            double precision :: a
+            double precision dimension(*) :: et
+            double precision dimension(*) :: qn
+            double precision dimension(*) :: dqn
+        end subroutine delagr
+        subroutine dmjagl(n,nm,a,b,et,vn,dma) ! in :splib:splib.f
+            integer :: n
+            integer optional,check((shape(dma,0)-1)==nm),depend(dma) :: nm=(shape(dma,0)-1)
+            double precision :: a
+            double precision :: b
+            double precision dimension(*) :: et
+            double precision dimension(*) :: vn
+            double precision dimension(nm + 1,*) :: dma
+        end subroutine dmjagl
+        subroutine dmlegl(n,nm,et,vn,dma) ! in :splib:splib.f
+            integer :: n
+            integer optional,check((shape(dma,0)-1)==nm),depend(dma) :: nm=(shape(dma,0)-1)
+            double precision dimension(*) :: et
+            double precision dimension(*) :: vn
+            double precision dimension(nm + 1,*) :: dma
+        end subroutine dmlegl
+        subroutine dmchgl(n,nm,et,dma) ! in :splib:splib.f
+            integer :: n
+            integer optional,check((shape(dma,0)-1)==nm),depend(dma) :: nm=(shape(dma,0)-1)
+            double precision dimension(*) :: et
+            double precision dimension(nm + 1,*) :: dma
+        end subroutine dmchgl
+        subroutine dmlagr(n,nm,a,et,dma) ! in :splib:splib.f
+            integer :: n
+            integer optional,check((shape(dma,0)-1)==nm),depend(dma) :: nm=(shape(dma,0)-1)
+            double precision :: a
+            double precision dimension(*) :: et
+            double precision dimension(nm + 1,*) :: dma
+        end subroutine dmlagr
+        subroutine fcchga(n,qz,co) ! in :splib:splib.f
+            integer optional,intent(in),check(len(qz)>=n),depend(qz) :: n=len(qz)
+            double precision dimension(n),intent(in) :: qz
+            double precision dimension(n),intent(out),depend(n) :: co
+        end subroutine fcchga
+        subroutine fcchgl(n,qn,co) ! in :splib:splib.f
+            integer optional,intent(in),check((len(qn)-1)>=n),depend(qn) :: n=(len(qn)-1)
+            double precision dimension(n + 1),intent(in) :: qn
+            double precision dimension(n + 1),intent(out),depend(n) :: co
+        end subroutine fcchgl
+        subroutine fvchgl(n,co,qn) ! in :splib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision dimension(n + 1),intent(in) :: co
+            double precision dimension(n + 1),intent(out),depend(n) :: qn
+        end subroutine fvchgl
+        subroutine fdchgl(n,qn,cd,dqn) ! in :splib:splib.f
+            integer optional,intent(in),check((len(qn)-1)>=n),depend(qn) :: n=(len(qn)-1)
+            double precision dimension(n + 1),intent(in) :: qn
+            double precision dimension(n + 1),intent(out),depend(n) :: cd
+            double precision dimension(n + 1),intent(out),depend(n) :: dqn
+        end subroutine fdchgl
+        subroutine edlegl(n,et,vn,fu,s1,s2,pa,so,dso,d2so) ! in :splib:splib.f
+            integer :: n
+            double precision dimension(*) :: et
+            double precision dimension(*) :: vn
+            double precision dimension(*) :: fu
+            double precision :: s1
+            double precision :: s2
+            double precision :: pa
+            double precision dimension(*) :: so
+            double precision dimension(*) :: dso
+            double precision dimension(*) :: d2so
+        end subroutine edlegl
+        subroutine dmlega(n,nm,cs,dz,dga) ! in :splib:splib.f
+            integer intent(in) :: n
+            integer intent(in) :: nm
+            double precision dimension(1),intent(in) :: cs
+            double precision dimension(1),intent(in) :: dz
+            double precision dimension(nm,nm),intent(out),depend(nm,nm) :: dga
+        end subroutine dmlega
+        subroutine hermite_to_complex(x,n,q) ! in :splib:hermite_form_to_complex_conj.f
+            double precision dimension(n),intent(in) :: x
+            integer optional,intent(in),check(len(x)>=n),depend(x) :: n=len(x)
+            double complex dimension(n),intent(out),depend(n) :: q
+        end subroutine hermite_to_complex
+        subroutine complex_to_hermite(q,n,x) ! in :splib:hermite_form_to_complex_conj.f
+            double complex dimension(n),intent(in) :: q
+            integer optional,intent(in),check(len(q)>=n),depend(q) :: n=len(q)
+            double precision dimension(n),intent(out),depend(n) :: x
+        end subroutine complex_to_hermite
+        subroutine complex_to_hermite_r2c(q,n,x) ! in :splib:hermite_form_to_complex_conj.f
+            double complex dimension(n),intent(in) :: q
+            integer optional,intent(in),check(len(q)>=n),depend(q) :: n=len(q)
+            double precision dimension(n),intent(out),depend(n) :: x
+        end subroutine complex_to_hermite_r2c
+    end interface 
+end python module splib
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/
