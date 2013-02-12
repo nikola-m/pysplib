@@ -1,13 +1,13 @@
 !    -*- f90 -*-
 ! Note: the context of this file is case sensitive.
 
-python module splib ! in 
-    interface  ! in :splib
-        subroutine gammaf(x,gx) ! in :splib:splib.f
+python module pysplib ! in 
+    interface  ! in :pysplib
+        subroutine gammaf(x,gx) ! in :pysplib:splib.f
             double precision intent(in) :: x
             double precision intent(out) :: gx
         end subroutine gammaf
-        subroutine vajapo(n,a,b,x,y,dy,d2y) ! in :splib:splib.f
+        subroutine vajapo(n,a,b,x,y,dy,d2y) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision intent(in) :: a
             double precision intent(in) :: b
@@ -16,21 +16,21 @@ python module splib ! in
             double precision intent(out) :: dy
             double precision intent(out) :: d2y
         end subroutine vajapo
-        subroutine valepo(n,x,y,dy,d2y) ! in :splib:splib.f
+        subroutine valepo(n,x,y,dy,d2y) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision intent(in) :: x
             double precision intent(out) :: y
             double precision intent(out) :: dy
             double precision intent(out) :: d2y
         end subroutine valepo
-        subroutine vachpo(n,x,y,dy,d2y) ! in :splib:splib.f
+        subroutine vachpo(n,x,y,dy,d2y) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision intent(in) :: x
             double precision intent(out) :: y
             double precision intent(out) :: dy
             double precision intent(out) :: d2y
         end subroutine vachpo
-        subroutine valapo(n,a,x,y,dy,d2y) ! in :splib:splib.f
+        subroutine valapo(n,a,x,y,dy,d2y) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision intent(in) :: a
             double precision intent(in) :: x
@@ -38,558 +38,558 @@ python module splib ! in
             double precision intent(out) :: dy
             double precision intent(out) :: d2y
         end subroutine valapo
-        subroutine vahepo(n,x,y,dy,d2y) ! in :splib:splib.f
+        subroutine vahepo(n,x,y,dy,d2y) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision intent(in) :: x
             double precision intent(out) :: y
             double precision intent(out) :: dy
             double precision intent(out) :: d2y
         end subroutine vahepo
-        subroutine valasf(n,a,x,y,dy) ! in :splib:splib.f
+        subroutine valasf(n,a,x,y,dy) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision intent(in) :: a
             double precision intent(in) :: x
             double precision intent(out) :: y
             double precision intent(out) :: dy
         end subroutine valasf
-        subroutine vahesf(n,x,y,dy) ! in :splib:splib.f
+        subroutine vahesf(n,x,y,dy) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision intent(in) :: x
             double precision intent(out) :: y
             double precision intent(out) :: dy
         end subroutine vahesf
-        subroutine zejaga(n,a,b,cs,dz) ! in :splib:splib.f
+        subroutine zejaga(n,a,b,cs,dz) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision intent(in) :: a
             double precision intent(in) :: b
             double precision dimension(n),intent(out),depend(n) :: cs
             double precision dimension(n),intent(out),depend(n) :: dz
         end subroutine zejaga
-        subroutine zelega(n,cs,dz) ! in :splib:splib.f
+        subroutine zelega(n,cs,dz) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision dimension(n),intent(out),depend(n) :: cs
             double precision dimension(n),intent(out),depend(n) :: dz
         end subroutine zelega
-        subroutine zechga(n,cs,dz) ! in :splib:splib.f
+        subroutine zechga(n,cs,dz) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision dimension(n),intent(out),depend(n) :: cs
             double precision dimension(n),intent(out),depend(n) :: dz
         end subroutine zechga
-        subroutine zelaga(n,a,cs,dz) ! in :splib:splib.f
+        subroutine zelaga(n,a,cs,dz) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision intent(in) :: a
             double precision dimension(1),intent(out) :: cs
             double precision dimension(1),intent(out) :: dz
         end subroutine zelaga
-        subroutine zehega(n,cs,dz) ! in :splib:splib.f
+        subroutine zehega(n,cs,dz) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision dimension(n),intent(out),depend(n) :: cs
             double precision dimension(n),intent(out),depend(n) :: dz
         end subroutine zehega
-        subroutine zejagl(n,a,b,et,vn) ! in :splib:splib.f
+        subroutine zejagl(n,a,b,et,vn) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision intent(in) :: a
             double precision intent(in) :: b
             double precision dimension(n + 1),intent(out),depend(n) :: et
             double precision dimension(n + 1),intent(out),depend(n) :: vn
         end subroutine zejagl
-        subroutine zelegl(n,et,vn) ! in :splib:splib.f
+        subroutine zelegl(n,et,vn) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision dimension(n + 1),intent(out),depend(n) :: et
             double precision dimension(n + 1),intent(out),depend(n) :: vn
         end subroutine zelegl
-        subroutine zechgl(n,et) ! in :splib:splib.f
+        subroutine zechgl(n,et) ! in :pysplib:splib.f
             integer intent(in) :: n
             double precision dimension(n + 1),intent(out),depend(n) :: et
         end subroutine zechgl
-        subroutine zelagr(n,a,et,vn) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision dimension(*) :: et
-            double precision dimension(*) :: vn
+        subroutine zelagr(n,a,et,vn) ! in :pysplib:splib.f
+            integer intent(in) :: n
+            double precision intent(in) :: a
+            double precision dimension(n),intent(out),depend(n) :: et
+            double precision dimension(n),intent(out),depend(n) :: vn
         end subroutine zelagr
-        subroutine wejaga(n,a,b,cs,dz,we) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision :: b
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: dz
-            double precision dimension(1) :: we
+        subroutine wejaga(n,a,b,cs,dz,we) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
+            double precision intent(in) :: a
+            double precision intent(in) :: b
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(in),depend(n) :: dz
+            double precision dimension(n),intent(out),depend(n) :: we
         end subroutine wejaga
-        subroutine welega(n,cs,dz,we) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: dz
-            double precision dimension(1) :: we
+        subroutine welega(n,cs,dz,we) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(in),depend(n) :: dz
+            double precision dimension(n),intent(out),depend(n) :: we
         end subroutine welega
-        subroutine wechga(n,we) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(1) :: we
+        subroutine wechga(n,we) ! in :pysplib:splib.f
+            integer intent(in) :: n
+            double precision dimension(n),intent(out),depend(n) :: we
         end subroutine wechga
-        subroutine welaga(n,a,cs,we) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: we
+        subroutine welaga(n,a,cs,we) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
+            double precision intent(in) :: a
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(out),depend(n) :: we
         end subroutine welaga
-        subroutine wehega(n,cs,we) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: we
+        subroutine wehega(n,cs,we) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(out),depend(n) :: we
         end subroutine wehega
-        subroutine wejagl(n,a,b,et,wt) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision :: b
-            double precision dimension(*) :: et
-            double precision dimension(*) :: wt
+        subroutine wejagl(n,a,b,et,wt) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(et)-1)>=n),depend(et) :: n=(len(et)-1)
+            double precision intent(in) :: a
+            double precision intent(in) :: b
+            double precision dimension(n + 1),intent(in) :: et
+            double precision dimension(n + 1),intent(out),depend(n) :: wt
         end subroutine wejagl
-        subroutine welegl(n,et,vn,wt) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: et
-            double precision dimension(*) :: vn
-            double precision dimension(*) :: wt
+        subroutine welegl(n,et,vn,wt) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(et)-1)>=n),depend(et) :: n=(len(et)-1)
+            double precision dimension(n + 1),intent(in) :: et
+            double precision dimension(n + 1),intent(in),depend(n) :: vn
+            double precision dimension(n + 1),intent(out),depend(n) :: wt
         end subroutine welegl
-        subroutine wechgl(n,wt) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: wt
+        subroutine wechgl(n,wt) ! in :pysplib:splib.f
+            integer intent(in) :: n
+            double precision dimension(n + 1),intent(out),depend(n) :: wt
         end subroutine wechgl
-        subroutine welagr(n,a,et,wt) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision dimension(*) :: et
-            double precision dimension(*) :: wt
+        subroutine welagr(n,a,et,wt) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(et)>=n),depend(et) :: n=len(et)
+            double precision intent(in) :: a
+            double precision dimension(n),intent(in) :: et
+            double precision dimension(n),intent(out),depend(n) :: wt
         end subroutine welagr
-        subroutine wechcc(n,wk) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: wk
+        subroutine wechcc(n,wk) ! in :pysplib:splib.f
+            integer intent(in) :: n
+            double precision dimension(2 * n + 1),intent(out),depend(n) :: wk
         end subroutine wechcc
-        subroutine injaga(n,a,b,cs,dz,qz,x,qx) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision :: b
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: dz
-            double precision dimension(1) :: qz
-            double precision :: x
-            double precision :: qx
+        subroutine injaga(n,a,b,cs,dz,qz,x,qx) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
+            double precision intent(in) :: a
+            double precision intent(in) :: b
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(in),depend(n) :: dz
+            double precision dimension(n),intent(in),depend(n) :: qz
+            double precision intent(in) :: x
+            double precision intent(out) :: qx
         end subroutine injaga
-        subroutine inlega(n,cs,dz,qz,x,qx) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: dz
-            double precision dimension(1) :: qz
-            double precision :: x
-            double precision :: qx
+        subroutine inlega(n,cs,dz,qz,x,qx) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(in),depend(n) :: dz
+            double precision dimension(n),intent(in),depend(n) :: qz
+            double precision intent(in) :: x
+            double precision intent(out) :: qx
         end subroutine inlega
-        subroutine inchga(n,dz,qz,x,qx) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(1) :: dz
-            double precision dimension(1) :: qz
-            double precision :: x
-            double precision :: qx
+        subroutine inchga(n,dz,qz,x,qx) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(dz)>=n),depend(dz) :: n=len(dz)
+            double precision dimension(n),intent(in) :: dz
+            double precision dimension(n),intent(in),depend(n) :: qz
+            double precision intent(in) :: x
+            double precision intent(out) :: qx
         end subroutine inchga
-        subroutine inlaga(n,a,cs,dz,qz,x,qx) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: dz
-            double precision dimension(1) :: qz
-            double precision :: x
-            double precision :: qx
+        subroutine inlaga(n,a,cs,dz,qz,x,qx) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
+            double precision intent(in) :: a
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(in),depend(n) :: dz
+            double precision dimension(n),intent(in),depend(n) :: qz
+            double precision intent(in) :: x
+            double precision intent(out) :: qx
         end subroutine inlaga
-        subroutine inhega(n,cs,dz,qz,x,qx) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: dz
-            double precision dimension(1) :: qz
-            double precision :: x
-            double precision :: qx
+        subroutine inhega(n,cs,dz,qz,x,qx) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(in),depend(n) :: dz
+            double precision dimension(n),intent(in),depend(n) :: qz
+            double precision intent(in) :: x
+            double precision intent(out) :: qx
         end subroutine inhega
-        subroutine injagl(n,a,b,et,vn,qn,x,qx) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision :: b
-            double precision dimension(*) :: et
-            double precision dimension(*) :: vn
-            double precision dimension(*) :: qn
-            double precision :: x
-            double precision :: qx
+        subroutine injagl(n,a,b,et,vn,qn,x,qx) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(et)-1)>=n),depend(et) :: n=(len(et)-1)
+            double precision intent(in) :: a
+            double precision intent(in) :: b
+            double precision dimension(n + 1),intent(in) :: et
+            double precision dimension(n + 1),intent(in),depend(n) :: vn
+            double precision dimension(n + 1),intent(in),depend(n) :: qn
+            double precision intent(in) :: x
+            double precision intent(out) :: qx
         end subroutine injagl
-        subroutine inlegl(n,et,vn,qn,x,qx) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: et
-            double precision dimension(*) :: vn
-            double precision dimension(*) :: qn
-            double precision :: x
-            double precision :: qx
+        subroutine inlegl(n,et,vn,qn,x,qx) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(et)-1)>=n),depend(et) :: n=(len(et)-1)
+            double precision dimension(n + 1),intent(in) :: et
+            double precision dimension(n + 1),intent(in),depend(n) :: vn
+            double precision dimension(n + 1),intent(in),depend(n) :: qn
+            double precision intent(in) :: x
+            double precision intent(out) :: qx
         end subroutine inlegl
-        subroutine inchgl(n,qn,x,qx) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: qn
-            double precision :: x
-            double precision :: qx
+        subroutine inchgl(n,qn,x,qx) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(qn)-1)>=n),depend(qn) :: n=(len(qn)-1)
+            double precision dimension(n + 1),intent(in) :: qn
+            double precision intent(in) :: x
+            double precision intent(out) :: qx
         end subroutine inchgl
-        subroutine inlagr(n,a,et,vn,qn,x,qx) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision dimension(*) :: et
-            double precision dimension(*) :: vn
-            double precision dimension(*) :: qn
-            double precision :: x
-            double precision :: qx
+        subroutine inlagr(n,a,et,vn,qn,x,qx) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(et)>=n),depend(et) :: n=len(et)
+            double precision intent(in) :: a
+            double precision dimension(n),intent(in) :: et
+            double precision dimension(n),intent(in),depend(n) :: vn
+            double precision dimension(n),intent(in),depend(n) :: qn
+            double precision intent(in) :: x
+            double precision intent(out) :: qx
         end subroutine inlagr
-        subroutine nolega(n,qz,we,qi,qm) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(1) :: qz
-            double precision dimension(1) :: we
-            double precision :: qi
-            double precision :: qm
+        subroutine nolega(n,qz,we,qi,qm) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(qz)>=n),depend(qz) :: n=len(qz)
+            double precision dimension(n),intent(in) :: qz
+            double precision dimension(n),intent(in),depend(n) :: we
+            double precision intent(out) :: qi
+            double precision intent(out) :: qm
         end subroutine nolega
-        subroutine nochga(n,dz,qz,wk,qw,qi,qm) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(1) :: dz
-            double precision dimension(1) :: qz
-            double precision dimension(*) :: wk
-            double precision :: qw
-            double precision :: qi
-            double precision :: qm
+        subroutine nochga(n,dz,qz,wk,qw,qi,qm) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(dz)>=n),depend(dz) :: n=len(dz)
+            double precision dimension(n),intent(in) :: dz
+            double precision dimension(n),intent(in),depend(n) :: qz
+            double precision dimension(2 * n + 1),intent(in),depend(n) :: wk
+            double precision intent(out) :: qw
+            double precision intent(out) :: qi
+            double precision intent(out) :: qm
         end subroutine nochga
-        subroutine nojagl(n,a,b,vn,qn,wt,qw,qs,qm) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision :: b
-            double precision dimension(*) :: vn
-            double precision dimension(*) :: qn
-            double precision dimension(*) :: wt
-            double precision :: qw
-            double precision :: qs
-            double precision :: qm
+        subroutine nojagl(n,a,b,vn,qn,wt,qw,qs,qm) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(vn)-1)>=n),depend(vn) :: n=(len(vn)-1)
+            double precision intent(in) :: a
+            double precision intent(in) :: b
+            double precision dimension(n + 1),intent(in) :: vn
+            double precision dimension(n + 1),intent(in),depend(n) :: qn
+            double precision dimension(n + 1),intent(in),depend(n) :: wt
+            double precision intent(out) :: qw
+            double precision intent(out) :: qs
+            double precision intent(out) :: qm
         end subroutine nojagl
-        subroutine nolegl(n,vn,qn,wt,qi,qs,qm) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: vn
-            double precision dimension(*) :: qn
-            double precision dimension(*) :: wt
-            double precision :: qi
-            double precision :: qs
-            double precision :: qm
+        subroutine nolegl(n,vn,qn,wt,qi,qs,qm) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(vn)-1)>=n),depend(vn) :: n=(len(vn)-1)
+            double precision dimension(n + 1),intent(in) :: vn
+            double precision dimension(n + 1),intent(in),depend(n) :: qn
+            double precision dimension(n + 1),intent(in),depend(n) :: wt
+            double precision intent(out) :: qi
+            double precision intent(out) :: qs
+            double precision intent(out) :: qm
         end subroutine nolegl
-        subroutine nochgl(n,qn,wk,qw,qi,qs,qm) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: qn
-            double precision dimension(*) :: wk
-            double precision :: qw
-            double precision :: qi
-            double precision :: qs
-            double precision :: qm
+        subroutine nochgl(n,qn,wk,qw,qi,qs,qm) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(qn)-1)>=n),depend(qn) :: n=(len(qn)-1)
+            double precision dimension(n + 1),intent(in) :: qn
+            double precision dimension(2 * n + 1),intent(in),depend(n) :: wk
+            double precision intent(out) :: qw
+            double precision intent(out) :: qi
+            double precision intent(out) :: qs
+            double precision intent(out) :: qm
         end subroutine nochgl
-        subroutine cojaga(n,a,b,cs,qz,we,co) ! in :splib:splib.f
-            integer :: n
+        subroutine cojaga(n,a,b,cs,qz,we,co) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
             double precision :: a
             double precision :: b
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: qz
-            double precision dimension(1) :: we
-            double precision dimension(*) :: co
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(in),depend(n) :: qz
+            double precision dimension(n),intent(in),depend(n) :: we
+            double precision dimension(n),intent(in),depend(n) :: co
         end subroutine cojaga
-        subroutine colega(n,cs,qz,we,co) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: qz
-            double precision dimension(1) :: we
-            double precision dimension(*) :: co
+        subroutine colega(n,cs,qz,we,co) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(in),depend(n) :: qz
+            double precision dimension(n),intent(in),depend(n) :: we
+            double precision dimension(n),intent(in),depend(n) :: co
         end subroutine colega
-        subroutine cochga(n,qz,co) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(1) :: qz
-            double precision dimension(*) :: co
+        subroutine cochga(n,qz,co) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(qz)>=n),depend(qz) :: n=len(qz)
+            double precision dimension(n),intent(in) :: qz
+            double precision dimension(n),intent(in),depend(n) :: co
         end subroutine cochga
-        subroutine colaga(n,a,cs,qz,we,co) ! in :splib:splib.f
-            integer :: n
+        subroutine colaga(n,a,cs,qz,we,co) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
             double precision :: a
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: qz
-            double precision dimension(1) :: we
-            double precision dimension(*) :: co
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(in),depend(n) :: qz
+            double precision dimension(n),intent(in),depend(n) :: we
+            double precision dimension(n),intent(out),depend(n) :: co
         end subroutine colaga
-        subroutine cohega(n,cs,qz,we,co) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: qz
-            double precision dimension(1) :: we
-            double precision dimension(*) :: co
+        subroutine cohega(n,cs,qz,we,co) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(in),depend(n) :: qz
+            double precision dimension(n),intent(in),depend(n) :: we
+            double precision dimension(n),intent(out),depend(n) :: co
         end subroutine cohega
-        subroutine cojagl(n,a,b,et,vn,qn,wt,co) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision :: b
-            double precision dimension(*) :: et
-            double precision dimension(*) :: vn
-            double precision dimension(*) :: qn
-            double precision dimension(*) :: wt
-            double precision dimension(*) :: co
+        subroutine cojagl(n,a,b,et,vn,qn,wt,co) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(et)-1)>=n),depend(et) :: n=(len(et)-1)
+            double precision intent(in) :: a
+            double precision intent(in) :: b
+            double precision dimension(n + 1),intent(in) :: et
+            double precision dimension(n + 1),intent(in),depend(n) :: vn
+            double precision dimension(n + 1),intent(in),depend(n) :: qn
+            double precision dimension(n + 1),intent(in),depend(n) :: wt
+            double precision dimension(n + 1),intent(out),depend(n) :: co
         end subroutine cojagl
-        subroutine colegl(n,et,qn,wt,co) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: et
-            double precision dimension(*) :: qn
-            double precision dimension(*) :: wt
-            double precision dimension(*) :: co
+        subroutine colegl(n,et,qn,wt,co) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(et)-1)>=n),depend(et) :: n=(len(et)-1)
+            double precision dimension(n + 1),intent(in) :: et
+            double precision dimension(n + 1),intent(in),depend(n) :: qn
+            double precision dimension(n + 1),intent(in),depend(n) :: wt
+            double precision dimension(n + 1),intent(out),depend(n) :: co
         end subroutine colegl
-        subroutine cochgl(n,qn,co) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: qn
-            double precision dimension(*) :: co
+        subroutine cochgl(n,qn,co) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(qn)-1)>=n),depend(qn) :: n=(len(qn)-1)
+            double precision dimension(n + 1),intent(in) :: qn
+            double precision dimension(n + 1),intent(out),depend(n) :: co
         end subroutine cochgl
-        subroutine colagr(n,a,et,qn,wt,co) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision dimension(*) :: et
-            double precision dimension(*) :: qn
-            double precision dimension(*) :: wt
-            double precision dimension(*) :: co
+        subroutine colagr(n,a,et,qn,wt,co) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(et)>=n),depend(et) :: n=len(et)
+            double precision intent(in) :: a
+            double precision dimension(n),intent(in) :: et
+            double precision dimension(n),intent(in),depend(n) :: qn
+            double precision dimension(n),intent(in),depend(n) :: wt
+            double precision dimension(n),intent(out),depend(n) :: co
         end subroutine colagr
-        subroutine pvjaex(n,a,b,x,co,y,dy,d2y) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision :: b
-            double precision :: x
-            double precision dimension(*) :: co
-            double precision :: y
-            double precision :: dy
-            double precision :: d2y
+        subroutine pvjaex(n,a,b,x,co,y,dy,d2y) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision intent(in) :: a
+            double precision intent(in) :: b
+            double precision intent(in) :: x
+            double precision dimension(n + 1),intent(in) :: co
+            double precision intent(out) :: y
+            double precision intent(out) :: dy
+            double precision intent(out) :: d2y
         end subroutine pvjaex
-        subroutine pvleex(n,x,co,y,dy,d2y) ! in :splib:splib.f
-            integer :: n
-            double precision :: x
-            double precision dimension(*) :: co
-            double precision :: y
-            double precision :: dy
-            double precision :: d2y
+        subroutine pvleex(n,x,co,y,dy,d2y) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision intent(in) :: x
+            double precision dimension(n + 1),intent(in) :: co
+            double precision intent(out) :: y
+            double precision intent(out) :: dy
+            double precision intent(out) :: d2y
         end subroutine pvleex
-        subroutine pvchex(n,x,co,y,dy,d2y) ! in :splib:splib.f
-            integer :: n
-            double precision :: x
-            double precision dimension(*) :: co
-            double precision :: y
-            double precision :: dy
-            double precision :: d2y
+        subroutine pvchex(n,x,co,y,dy,d2y) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision intent(in) :: x
+            double precision dimension(n + 1),intent(in) :: co
+            double precision intent(out) :: y
+            double precision intent(out) :: dy
+            double precision intent(out) :: d2y
         end subroutine pvchex
-        subroutine pvlaex(n,a,x,co,y,dy,d2y) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision :: x
-            double precision dimension(*) :: co
-            double precision :: y
-            double precision :: dy
-            double precision :: d2y
+        subroutine pvlaex(n,a,x,co,y,dy,d2y) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision intent(in) :: a
+            double precision intent(in) :: x
+            double precision dimension(n + 1),intent(in) :: co
+            double precision intent(out) :: y
+            double precision intent(out) :: dy
+            double precision intent(out) :: d2y
         end subroutine pvlaex
-        subroutine pvheex(n,x,co,y,dy,d2y) ! in :splib:splib.f
-            integer :: n
-            double precision :: x
-            double precision dimension(*) :: co
-            double precision :: y
-            double precision :: dy
-            double precision :: d2y
+        subroutine pvheex(n,x,co,y,dy,d2y) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision intent(in) :: x
+            double precision dimension(n + 1),intent(in) :: co
+            double precision intent(out) :: y
+            double precision intent(out) :: dy
+            double precision intent(out) :: d2y
         end subroutine pvheex
-        subroutine nojaex(n,a,b,co,qw) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision :: b
-            double precision dimension(*) :: co
-            double precision :: qw
+        subroutine nojaex(n,a,b,co,qw) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision intent(in) :: a
+            double precision intent(in) :: b
+            double precision dimension(n + 1),intent(in) :: co
+            double precision intent(out) :: qw
         end subroutine nojaex
-        subroutine noleex(n,co,qi) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: co
-            double precision :: qi
+        subroutine noleex(n,co,qi) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision dimension(n + 1),intent(in) :: co
+            double precision intent(out) :: qi
         end subroutine noleex
-        subroutine nochex(n,co,qw,qi) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: co
-            double precision :: qw
-            double precision :: qi
+        subroutine nochex(n,co,qw,qi) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision dimension(n + 1),intent(in) :: co
+            double precision intent(out) :: qw
+            double precision intent(out) :: qi
         end subroutine nochex
-        subroutine nolaex(n,a,co,qw) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision dimension(*) :: co
-            double precision :: qw
+        subroutine nolaex(n,a,co,qw) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision intent(in) :: a
+            double precision dimension(n + 1),intent(in) :: co
+            double precision intent(out) :: qw
         end subroutine nolaex
-        subroutine noheex(n,co,qw) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: co
-            double precision :: qw
+        subroutine noheex(n,co,qw) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision dimension(n + 1),intent(in) :: co
+            double precision intent(out) :: qw
         end subroutine noheex
-        subroutine cojade(n,g,co,cd,cd2) ! in :splib:splib.f
-            integer :: n
-            double precision :: g
-            double precision dimension(*) :: co
-            double precision dimension(*) :: cd
-            double precision dimension(*) :: cd2
+        subroutine cojade(n,g,co,cd,cd2) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision intent(in) :: g
+            double precision dimension(n + 1),intent(in) :: co
+            double precision dimension(n + 1),intent(out),depend(n) :: cd
+            double precision dimension(n + 1),intent(out),depend(n) :: cd2
         end subroutine cojade
-        subroutine colede(n,co,cd,cd2) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: co
-            double precision dimension(*) :: cd
-            double precision dimension(*) :: cd2
+        subroutine colede(n,co,cd,cd2) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision dimension(n + 1),intent(in) :: co
+            double precision dimension(n + 1),intent(out),depend(n) :: cd
+            double precision dimension(n + 1),intent(out),depend(n) :: cd2
         end subroutine colede
-        subroutine cochde(n,co,cd,cd2) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: co
-            double precision dimension(*) :: cd
-            double precision dimension(*) :: cd2
+        subroutine cochde(n,co,cd,cd2) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision dimension(n + 1),intent(in) :: co
+            double precision dimension(n + 1),intent(out),depend(n) :: cd
+            double precision dimension(n + 1),intent(out),depend(n) :: cd2
         end subroutine cochde
-        subroutine colade(n,co,cd,cd2) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: co
-            double precision dimension(*) :: cd
-            double precision dimension(*) :: cd2
+        subroutine colade(n,co,cd,cd2) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision dimension(n + 1),intent(in) :: co
+            double precision dimension(n + 1),intent(out),depend(n) :: cd
+            double precision dimension(n + 1),intent(out),depend(n) :: cd2
         end subroutine colade
-        subroutine cohede(n,co,cd,cd2) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: co
-            double precision dimension(*) :: cd
-            double precision dimension(*) :: cd2
+        subroutine cohede(n,co,cd,cd2) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
+            double precision dimension(n + 1),intent(in) :: co
+            double precision dimension(n + 1),intent(out),depend(n) :: cd
+            double precision dimension(n + 1),intent(out),depend(n) :: cd2
         end subroutine cohede
-        subroutine dejaga(n,a,b,cs,dz,qz,dqz) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision :: b
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: dz
-            double precision dimension(1) :: qz
-            double precision dimension(1) :: dqz
+        subroutine dejaga(n,a,b,cs,dz,qz,dqz) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
+            double precision intent(in) :: a
+            double precision intent(in) :: b
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(in),depend(n) :: dz
+            double precision dimension(n),intent(in),depend(n) :: qz
+            double precision dimension(n),intent(out),depend(n) :: dqz
         end subroutine dejaga
-        subroutine delaga(n,a,cs,qz,dqz) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: qz
-            double precision dimension(1) :: dqz
+        subroutine delaga(n,a,cs,qz,dqz) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
+            double precision intent(in) :: a
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(in),depend(n) :: qz
+            double precision dimension(n),intent(out),depend(n) :: dqz
         end subroutine delaga
-        subroutine dehega(n,cs,qz,dqz) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(1) :: cs
-            double precision dimension(1) :: qz
-            double precision dimension(1) :: dqz
+        subroutine dehega(n,cs,qz,dqz) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(in),depend(n) :: qz
+            double precision dimension(n),intent(out),depend(n) :: dqz
         end subroutine dehega
-        subroutine dejagl(n,a,b,et,vn,qn,dqn) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision :: b
-            double precision dimension(*) :: et
-            double precision dimension(*) :: vn
-            double precision dimension(*) :: qn
-            double precision dimension(*) :: dqn
+        subroutine dejagl(n,a,b,et,vn,qn,dqn) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(et)-1)>=n),depend(et) :: n=(len(et)-1)
+            double precision intent(in) :: a
+            double precision intent(in) :: b
+            double precision dimension(n + 1),intent(in) :: et
+            double precision dimension(n + 1),intent(in),depend(n) :: vn
+            double precision dimension(n + 1),intent(in),depend(n) :: qn
+            double precision dimension(n + 1),intent(out),depend(n) :: dqn
         end subroutine dejagl
-        subroutine delegl(n,et,vn,qn,dqn) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: et
-            double precision dimension(*) :: vn
-            double precision dimension(*) :: qn
-            double precision dimension(*) :: dqn
+        subroutine delegl(n,et,vn,qn,dqn) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(et)-1)>=n),depend(et) :: n=(len(et)-1)
+            double precision dimension(n + 1),intent(in) :: et
+            double precision dimension(n + 1),intent(in),depend(n) :: vn
+            double precision dimension(n + 1),intent(in),depend(n) :: qn
+            double precision dimension(n + 1),intent(out),depend(n) :: dqn
         end subroutine delegl
-        subroutine dechgl(n,et,qn,dqn) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: et
-            double precision dimension(*) :: qn
-            double precision dimension(*) :: dqn
+        subroutine dechgl(n,et,qn,dqn) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(et)-1)>=n),depend(et) :: n=(len(et)-1)
+            double precision dimension(n + 1),intent(in) :: et
+            double precision dimension(n + 1),intent(in),depend(n) :: qn
+            double precision dimension(n + 1),intent(out),depend(n) :: dqn
         end subroutine dechgl
-        subroutine delagr(n,a,et,qn,dqn) ! in :splib:splib.f
-            integer :: n
-            double precision :: a
-            double precision dimension(*) :: et
-            double precision dimension(*) :: qn
-            double precision dimension(*) :: dqn
+        subroutine delagr(n,a,et,qn,dqn) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(et)>=n),depend(et) :: n=len(et)
+            double precision intent(in) :: a
+            double precision dimension(n),intent(in) :: et
+            double precision dimension(n),intent(in),depend(n) :: qn
+            double precision dimension(n),intent(out),depend(n) :: dqn
         end subroutine delagr
-        subroutine dmjagl(n,nm,a,b,et,vn,dma) ! in :splib:splib.f
-            integer :: n
-            integer optional,check((shape(dma,0)-1)==nm),depend(dma) :: nm=(shape(dma,0)-1)
-            double precision :: a
+        subroutine dmjagl(n,nm,a,b,et,vn,dma) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(et)-1)>=n),depend(et) :: n=(len(et)-1)
+            integer intent(in) :: nm
+            double precision intent(in) :: a
             double precision :: b
-            double precision dimension(*) :: et
-            double precision dimension(*) :: vn
-            double precision dimension(nm + 1,*) :: dma
+            double precision dimension(n + 1),intent(in) :: et
+            double precision dimension(n + 1),intent(in),depend(n) :: vn
+            double precision dimension(nm + 1,nm + 1),intent(out),depend(nm,nm) :: dma
         end subroutine dmjagl
-        subroutine dmlegl(n,nm,et,vn,dma) ! in :splib:splib.f
-            integer :: n
-            integer optional,check((shape(dma,0)-1)==nm),depend(dma) :: nm=(shape(dma,0)-1)
-            double precision dimension(*) :: et
-            double precision dimension(*) :: vn
-            double precision dimension(nm + 1,*) :: dma
+        subroutine dmlegl(n,nm,et,vn,dma) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(et)-1)>=n),depend(et) :: n=(len(et)-1)
+            integer intent(in) :: nm
+            double precision dimension(n + 1),intent(in) :: et
+            double precision dimension(n + 1),intent(in),depend(n) :: vn
+            double precision dimension(nm + 1,nm + 1),intent(out),depend(nm,nm) :: dma
         end subroutine dmlegl
-        subroutine dmchgl(n,nm,et,dma) ! in :splib:splib.f
-            integer :: n
-            integer optional,check((shape(dma,0)-1)==nm),depend(dma) :: nm=(shape(dma,0)-1)
-            double precision dimension(*) :: et
-            double precision dimension(nm + 1,*) :: dma
+        subroutine dmchgl(n,nm,et,dma) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(et)-1)>=n),depend(et) :: n=(len(et)-1)
+            integer intent(in) :: nm
+            double precision dimension(n + 1),intent(in) :: et
+            double precision dimension(nm + 1,nm + 1),intent(out),depend(nm,nm) :: dma
         end subroutine dmchgl
-        subroutine dmlagr(n,nm,a,et,dma) ! in :splib:splib.f
-            integer :: n
-            integer optional,check((shape(dma,0)-1)==nm),depend(dma) :: nm=(shape(dma,0)-1)
-            double precision :: a
-            double precision dimension(*) :: et
-            double precision dimension(nm + 1,*) :: dma
+        subroutine dmlagr(n,nm,a,et,dma) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(et)>=n),depend(et) :: n=len(et)
+            integer intent(in) :: nm
+            double precision intent(in) :: a
+            double precision dimension(n),intent(in) :: et
+            double precision dimension(nm + 1,nm + 1),intent(out),depend(nm,nm) :: dma
         end subroutine dmlagr
-        subroutine fcchga(n,qz,co) ! in :splib:splib.f
+        subroutine fcchga(n,qz,co) ! in :pysplib:splib.f
             integer optional,intent(in),check(len(qz)>=n),depend(qz) :: n=len(qz)
             double precision dimension(n),intent(in) :: qz
             double precision dimension(n),intent(out),depend(n) :: co
         end subroutine fcchga
-        subroutine fcchgl(n,qn,co) ! in :splib:splib.f
+        subroutine fcchgl(n,qn,co) ! in :pysplib:splib.f
             integer optional,intent(in),check((len(qn)-1)>=n),depend(qn) :: n=(len(qn)-1)
             double precision dimension(n + 1),intent(in) :: qn
             double precision dimension(n + 1),intent(out),depend(n) :: co
         end subroutine fcchgl
-        subroutine fvchgl(n,co,qn) ! in :splib:splib.f
+        subroutine fvchgl(n,co,qn) ! in :pysplib:splib.f
             integer optional,intent(in),check((len(co)-1)>=n),depend(co) :: n=(len(co)-1)
             double precision dimension(n + 1),intent(in) :: co
             double precision dimension(n + 1),intent(out),depend(n) :: qn
         end subroutine fvchgl
-        subroutine fdchgl(n,qn,cd,dqn) ! in :splib:splib.f
+        subroutine fdchgl(n,qn,cd,dqn) ! in :pysplib:splib.f
             integer optional,intent(in),check((len(qn)-1)>=n),depend(qn) :: n=(len(qn)-1)
             double precision dimension(n + 1),intent(in) :: qn
             double precision dimension(n + 1),intent(out),depend(n) :: cd
             double precision dimension(n + 1),intent(out),depend(n) :: dqn
         end subroutine fdchgl
-        subroutine edlegl(n,et,vn,fu,s1,s2,pa,so,dso,d2so) ! in :splib:splib.f
-            integer :: n
-            double precision dimension(*) :: et
-            double precision dimension(*) :: vn
-            double precision dimension(*) :: fu
-            double precision :: s1
-            double precision :: s2
-            double precision :: pa
-            double precision dimension(*) :: so
-            double precision dimension(*) :: dso
-            double precision dimension(*) :: d2so
+        subroutine edlegl(n,et,vn,fu,s1,s2,pa,so,dso,d2so) ! in :pysplib:splib.f
+            integer optional,intent(in),check((len(et)-1)>=n),depend(et) :: n=(len(et)-1)
+            double precision dimension(n + 1),intent(in) :: et
+            double precision dimension(n + 1),intent(in),depend(n) :: vn
+            double precision dimension(n + 1),intent(in),depend(n) :: fu
+            double precision dimension(n),intent(in),depend(n) :: s1
+            double precision dimension(n),intent(in),depend(n) :: s2
+            double precision dimension(n),intent(in),depend(n) :: pa
+            double precision dimension(n + 1),intent(out),depend(n) :: so
+            double precision dimension(n + 1),intent(out),depend(n) :: dso
+            double precision dimension(n + 1),intent(out),depend(n) :: d2so
         end subroutine edlegl
-        subroutine dmlega(n,nm,cs,dz,dga) ! in :splib:splib.f
-            integer intent(in) :: n
+        subroutine dmlega(n,nm,cs,dz,dga) ! in :pysplib:splib.f
+            integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
             integer intent(in) :: nm
-            double precision dimension(1),intent(in) :: cs
-            double precision dimension(1),intent(in) :: dz
+            double precision dimension(n),intent(in) :: cs
+            double precision dimension(n),intent(in),depend(n) :: dz
             double precision dimension(nm,nm),intent(out),depend(nm,nm) :: dga
         end subroutine dmlega
-        subroutine hermite_to_complex(x,n,q) ! in :splib:hermite_form_to_complex_conj.f
+        subroutine hermite_to_complex(x,n,q) ! in :pysplib:hermite_form_to_complex_conj.f
             double precision dimension(n),intent(in) :: x
             integer optional,intent(in),check(len(x)>=n),depend(x) :: n=len(x)
             double complex dimension(n),intent(out),depend(n) :: q
         end subroutine hermite_to_complex
-        subroutine complex_to_hermite(q,n,x) ! in :splib:hermite_form_to_complex_conj.f
+        subroutine complex_to_hermite(q,n,x) ! in :pysplib:hermite_form_to_complex_conj.f
             double complex dimension(n),intent(in) :: q
             integer optional,intent(in),check(len(q)>=n),depend(q) :: n=len(q)
             double precision dimension(n),intent(out),depend(n) :: x
         end subroutine complex_to_hermite
-        subroutine complex_to_hermite_r2c(q,n,x) ! in :splib:hermite_form_to_complex_conj.f
+        subroutine complex_to_hermite_r2c(q,n,x) ! in :pysplib:hermite_form_to_complex_conj.f
             double complex dimension(n),intent(in) :: q
             integer optional,intent(in),check(len(q)>=n),depend(q) :: n=len(q)
             double precision dimension(n),intent(out),depend(n) :: x
         end subroutine complex_to_hermite_r2c
     end interface 
-end python module splib
+end python module pysplib
 
 ! This file was auto-generated with f2py (version:2).
 ! See http://cens.ioc.ee/projects/f2py2e/
