@@ -37,12 +37,13 @@ Then you may use splib in Python:
 ...
 ```
   
-# Licence: #  
+# Licence:    
 Available under GNU General Public License version 3  
   
   
 --------------
 For question write to:  
 Nikola Mirkov   
-email:nmirkov@vinca.rs  
+email:  
+nmirkov@vinca.rs  
 largeddysimulation@gmail.com 

@@ -4,7 +4,11 @@
 *     DEPARTMENT OF MATHEMATICS                                         
 *     UNIVERSITY OF MODENA                                               
 *     VIA CAMPI 213/B, 41100 MODENA, ITALY                         
-*     E-MAIL: funaro@unimo.it                                                                      
+*     E-MAIL: funaro@unimo.it        
+*
+*     Modifications by:
+*     Nikola Mirkov
+*     email: nmirkov@vinca.rs; largeddysimulation@gmail.com                                                              
 *****************************************************************       
 C                                                                       
       SUBROUTINE GAMMAF(X,GX)                                           
