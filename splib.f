@@ -767,7 +767,12 @@ C
 *   VN = SCALED LAGUERRE FUNCTION AT THE NODES, VN(I), I=0,N-1          
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), VN(0:*)                                        
+      DIMENSION ET(0:N-1), VN(0:N-1)  
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a
+cf2py double precision,intent(out),dimension(0:n-1) :: et,vn
+                                      
       IF (N .EQ. 0) RETURN                                              
                                                                         
          ET(0) = 0.D0                                                   
@@ -826,7 +831,13 @@ C
 *   WE = VECTOR OF THE WEIGHTS, WE(I), I=1,N                            
 ****************************************************************        
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), DZ(1), WE(1)                                     
+      DIMENSION CS(N), DZ(N), WE(N) 
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a,b
+cf2py double precision,intent(in),dimension(n) :: cs,dz
+cf2py double precision,intent(out),dimension(n) :: we
+                                    
       IF (N .EQ. 0) RETURN                                              
                                                                         
           AB = A+B+2.D0                                                 
@@ -859,7 +870,12 @@ C
 *   WE = VECTOR OF THE WEIGHTS, WE(I), I=1,N                            
 *****************************************************************       
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), DZ(1), WE(1)                                     
+      DIMENSION CS(N), DZ(N), WE(N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(n) :: cs,dz
+cf2py double precision,intent(out),dimension(n) :: we
+                                     
       IF (N .EQ. 0) RETURN                                              
                                                                         
           N2 = N/2                                                      
@@ -885,7 +901,11 @@ C
 *   WE = VECTOR OF THE WEIGHTS, WE(I), I=1,N                            
 *****************************************************************       
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION  WE(1)                                                  
+      DIMENSION  WE(N)  
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(out),dimension(n) :: we
+                                                
       IF (N .EQ. 0) RETURN                                              
                                                                         
          PI = 3.14159265358979323846D0                                  
@@ -906,7 +926,13 @@ C
 *   WE = VECTOR OF THE WEIGHTS, WE(I), I=1,N                            
 ****************************************************************        
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), WE(1)                                            
+      DIMENSION CS(N), WE(N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a
+cf2py double precision,intent(in),dimension(n) :: cs
+cf2py double precision,intent(out),dimension(n) :: we
+                                            
       IF (N .EQ. 0) RETURN                                              
                                                                         
           A1 = A+1.D0                                                   
@@ -936,7 +962,12 @@ C
 *   WE = VECTOR OF THE WEIGHTS, WE(I), I=1,N                            
 ****************************************************************        
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), WE(1)                                            
+      DIMENSION CS(N), WE(N)    
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(n) :: cs
+cf2py double precision,intent(out),dimension(n) :: we
+                                        
       IF (N .EQ. 0) RETURN                                              
                                                                         
           PR = 1.77245385090551588D0                                    
@@ -981,7 +1012,13 @@ C
 *   WT = VECTOR OF THE WEIGHTS, WT(I), I=0,N                            
 *********************************************************************   
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), WT(0:*)                                        
+      DIMENSION ET(0:N), WT(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a,b
+cf2py double precision,intent(in),dimension(0:n) :: et
+cf2py double precision,intent(out),dimension(0:n) :: wt
+                                        
       IF (N .EQ. 0) RETURN                                              
                                                                         
           A1  = A+1.D0                                                  
@@ -1035,7 +1072,12 @@ C
 *   WT = VECTOR OF THE WEIGHTS, WT(I), I=0,N                            
 *********************************************************************** 
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), VN(0:*), WT(0:*)                               
+      DIMENSION ET(0:N), VN(0:N), WT(0:N) 
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: et,vn
+cf2py double precision,intent(out),dimension(0:n) :: wt
+                              
       IF (N .EQ. 0) RETURN                                              
                                                                         
           N2 = (N-1)/2                                                  
@@ -1064,7 +1106,11 @@ C
 *   WT = VECTOR OF THE WEIGHTS, WT(I), I=0,N                            
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION  WT(0:*)                                                
+      DIMENSION  WT(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(out),dimension(0:n) :: wt
+                                                
       IF (N .EQ. 0) RETURN                                              
                                                                         
           PI = 3.14159265358979323846D0                                 
@@ -1090,7 +1136,13 @@ C
 *   WT = VECTOR OF THE WEIGHTS, WT(I), I=0,N-1                          
 *********************************************************************   
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), WT(0:*)                                        
+      DIMENSION ET(0:N-1), WT(0:N-1)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a
+cf2py double precision,intent(in),dimension(0:n-1) :: et
+cf2py double precision,intent(out),dimension(0:n-1) :: wt
+                                        
       IF (N .EQ. 0) RETURN                                              
                                                                         
           A1 = A+1.D0                                                   
@@ -1125,7 +1177,11 @@ C
 *   WK = VECTOR OF THE WEIGHTS, WK(I), I=0,2*N                          
 *********************************************************************   
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION WK(0:*)                                                 
+      DIMENSION WK(0:2*N)  
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(out),dimension(0:2*n) :: wk
+                                               
       IF (N .EQ. 0) RETURN                                              
                                                                         
          PI = 3.14159265358979323846D0                                  
@@ -1173,7 +1229,14 @@ C
 *   QX = VALUE OF THE POLYNOMIAL IN X                                   
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), DZ(1), QZ(1)                                     
+      DIMENSION CS(N), DZ(N), QZ(N) 
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a,b
+cf2py double precision,intent(in),dimension(n) :: cs,dz,qz
+cf2py double precision,intent(in) :: x
+cf2py double precision,intent(out) :: qx
+                                    
       IF (N .EQ. 0) RETURN                                              
                                                                         
           EPS = 1.D-14                                                  
@@ -1204,7 +1267,13 @@ C
 *   QX = VALUE OF THE POLYNOMIAL IN X                                   
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), DZ(1), QZ(1)                                     
+      DIMENSION CS(N), DZ(N), QZ(N)  
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(n) :: cs,dz,qz
+cf2py double precision,intent(in) :: x
+cf2py double precision,intent(out) :: qx
+                                   
       IF (N .EQ. 0) RETURN                                              
                                                                         
           EPS = 1.D-14                                                  
@@ -1234,7 +1303,13 @@ C
 *   QX = VALUE OF THE POLYNOMIAL IN X                                   
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION  DZ(1), QZ(1)                                           
+      DIMENSION  DZ(N), QZ(N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(n) :: dz,qz
+cf2py double precision,intent(in) :: x
+cf2py double precision,intent(out) :: qx
+                                           
       IF (N .EQ. 0) RETURN                                              
                                                                         
           EPS = 1.D-14                                                  
@@ -1269,7 +1344,14 @@ C
 *   QX = VALUE OF THE POLYNOMIAL IN X                                   
 *********************************************************************   
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), DZ(1), QZ(1)                                     
+      DIMENSION CS(N), DZ(N), QZ(N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a
+cf2py double precision,intent(in),dimension(n) :: cs,dz,qz
+cf2py double precision,intent(in) :: x
+cf2py double precision,intent(out) :: qx
+                                     
       IF (N .EQ. 0) RETURN                                              
                                                                         
           EPS = 1.D-14                                                  
@@ -1305,7 +1387,13 @@ C
 *   QX = VALUE OF THE POLYNOMIAL IN X                                   
 *********************************************************************   
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), DZ(1), QZ(1)                                     
+      DIMENSION CS(N), DZ(N), QZ(N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(n) :: cs,dz,qz
+cf2py double precision,intent(in) :: x
+cf2py double precision,intent(out) :: qx
+                                     
       IF (N .EQ. 0) RETURN                                              
                                                                         
           QX = QZ(1)                                                    
@@ -1346,7 +1434,14 @@ C
 *   QX = VALUE OF THE POLYNOMIAL IN X                                   
 *********************************************************************   
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), VN(0:*), QN(0:*)                               
+      DIMENSION ET(0:N), VN(0:N), QN(0:N)  
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a,b
+cf2py double precision,intent(in),dimension(0:n) :: et,vn,qn
+cf2py double precision,intent(in) :: x
+cf2py double precision,intent(out) :: qx
+                             
       IF (N .EQ. 0) RETURN                                              
                                                                         
           EPS = 1.D-14                                                  
@@ -1382,7 +1477,13 @@ C
 *   QX = VALUE OF THE POLYNOMIAL IN X                                   
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), VN(0:*), QN(0:*)                               
+      DIMENSION ET(0:N), VN(0:N), QN(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: et,vn,qn
+cf2py double precision,intent(in) :: x
+cf2py double precision,intent(out) :: qx
+                               
       IF (N .EQ. 0) RETURN                                              
                                                                         
           EPS = 1.D-14                                                  
@@ -1416,7 +1517,13 @@ C
 *   QX = VALUE OF THE POLYNOMIAL IN X                                   
 *********************************************************************   
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION  QN(0:*)                                                
+      DIMENSION  QN(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: qn
+cf2py double precision,intent(in) :: x
+cf2py double precision,intent(out) :: qx
+                                                
       IF (N .EQ. 0) RETURN                                              
                                                                         
           EPS = 1.D-14                                                  
@@ -1458,7 +1565,14 @@ C
 *   QX = VALUE OF THE POLYNOMIAL IN X                                   
 *********************************************************************   
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), VN(0:*), QN(0:*)                               
+      DIMENSION ET(0:N-1), VN(0:N-1), QN(0:N-1)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a
+cf2py double precision,intent(in),dimension(0:n-1) :: et,vn,qn
+cf2py double precision,intent(in) :: x
+cf2py double precision,intent(out) :: qx
+                               
       IF (N .EQ. 0) RETURN                                              
                                                                         
           QX = QN(0)                                                    
@@ -1504,7 +1618,13 @@ C
 *   QM = MAXIMUM VALUE OF THE POLYNOMIAL AT THE ZEROES                  
 *********************************************************************   
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION QZ(1), WE(1)                                            
+      DIMENSION QZ(N), WE(N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(n) :: qz,we
+cf2py double precision,intent(out) :: qi
+cf2py double precision,intent(out) :: qm
+                                            
       IF (N .EQ. 0) RETURN                                              
                                                                         
           EPS = 1.D-14                                                  
@@ -1527,13 +1647,21 @@ C
 *   N  = THE NUMBER OF ZEROES                                           
 *   DZ = CHEBYSHEV POLYNOMIAL DERIVATIVES AT THE ZEROES, DZ(I), I=1,N   
 *   QZ = VALUES OF THE POLYNOMIAL AT THE ZEROES, QZ(I), I=1,N           
-*   WK = VECTOR OF THE CLENSHAW-CURTIS WEIGHTS, WE(I), I=0,2*N          
+*   WK = VECTOR OF THE CLENSHAW-CURTIS WEIGHTS, WK(I), I=0,2*N          
 *   QW = WEIGHTED INTEGRAL NORM OF THE POLYNOMIAL                       
 *   QI = INTEGRAL NORM OF THE POLYNOMIAL                                
 *   QM = MAXIMUM VALUE OF THE POLYNOMIAL AT THE ZEROES                  
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION DZ(1), QZ(1), WK(0:*)                                   
+      DIMENSION DZ(N), QZ(N), WK(0:2*N)   
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(n) :: dz,qz
+cf2py double precision,intent(in),dimension(0:2*n) :: wk
+cf2py double precision,intent(out) :: qw
+cf2py double precision,intent(out) :: qi
+cf2py double precision,intent(out) :: qm
+                                
       IF (N .EQ. 0) RETURN                                              
                                                                         
           PI = 3.14159265358979323846D0                                 
@@ -1574,7 +1702,15 @@ C
 *   QM = MAXIMUM VALUE OF THE POLYNOMIAL AT THE NODES                   
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION VN(0:*), QN(0:*), WT(0:*)                               
+      DIMENSION VN(0:N), QN(0:N), WT(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a,b
+cf2py double precision,intent(in),dimension(n) :: vn,qn,wt
+cf2py double precision,intent(out) :: qw
+cf2py double precision,intent(out) :: qs
+cf2py double precision,intent(out) :: qm
+                               
       IF (N .EQ. 0) RETURN                                              
                                                                         
           EPS = 1.D-14                                                  
@@ -1627,7 +1763,14 @@ C
 *   QM = MAXIMUM VALUE OF THE POLYNOMIAL AT THE NODES                   
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION VN(0:*), QN(0:*), WT(0:*)                               
+      DIMENSION VN(0:N), QN(0:N), WT(0:N) 
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(n) :: vn,qn,wt
+cf2py double precision,intent(out) :: qi
+cf2py double precision,intent(out) :: qs
+cf2py double precision,intent(out) :: qm
+                              
       IF (N .EQ. 0) RETURN                                              
                                                                         
           EPS = 1.D-14                                                  
@@ -1665,7 +1808,16 @@ C
 *   QM = MAXIMUM VALUE OF THE POLYNOMIAL AT THE NODES                   
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION QN(0:*), WK(0:*)                                        
+      DIMENSION QN(0:N), WK(0:2*N)    
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: qn,wk
+cf2py double precision,intent(in),dimension(0:2*n) :: wk
+cf2py double precision,intent(out) :: qw
+cf2py double precision,intent(out) :: qi
+cf2py double precision,intent(out) :: qs
+cf2py double precision,intent(out) :: qm
+                                    
       IF (N .EQ. 0) RETURN                                              
                                                                         
           PI = 3.14159265358979323846D0                                 
@@ -1723,7 +1875,12 @@ C
 *   CO = FOURIER COEFFICIENTS OF THE POLYNOMIAL, CO(I), I=0,N-1         
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), QZ(1), WE(1), CO(0:*)                            
+      DIMENSION CS(N), QZ(N), WE(N), CO(0:N-1) 
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(n) :: cs,qz,we
+cf2py double precision,intent(in),dimension(0:n-1) :: co
+                           
       IF (N .EQ. 0) RETURN                                              
                                                                         
           A1  = A+1.D0                                                  
@@ -1782,7 +1939,12 @@ C
 *   CO = FOURIER COEFFICIENTS OF THE POLYNOMIAL, CO(I), I=0,N-1         
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), QZ(1), WE(1), CO(0:*)                            
+      DIMENSION CS(N), QZ(N), WE(N), CO(0:N-1) 
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(n) :: cs,qz,we
+cf2py double precision,intent(in),dimension(0:n-1) :: co
+                           
       IF (N .EQ. 0) RETURN                                              
                                                                         
           SU = 0.D0                                                     
@@ -1824,7 +1986,12 @@ C
 *   CO = FOURIER COEFFICIENTS OF THE POLYNOMIAL, CO(I), I=0,N-1         
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION  QZ(1), CO(0:*)                                         
+      DIMENSION  QZ(N), CO(0:N-1)  
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(n) :: qz
+cf2py double precision,intent(in),dimension(0:n-1) :: co
+                                       
       IF (N .EQ. 0) RETURN                                              
                                                                         
           PH = 1.57079632679489661923D0                                 
@@ -1863,7 +2030,12 @@ C
 *   CO = FOURIER COEFFICIENTS OF THE POLYNOMIAL, CO(I), I=0,N-1         
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), QZ(1), WE(1), CO(0:*)                            
+      DIMENSION CS(N), QZ(N), WE(N), CO(0:n-1)   
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(n) ::cs,qz,we
+cf2py double precision,intent(out),dimension(0:n-1) :: co 
+                            
       IF (N .EQ. 0) RETURN                                              
                                                                         
           A1  = A+1.D0                                                  
@@ -1911,7 +2083,12 @@ C
 *   CO = FOURIER COEFFICIENTS OF THE POLYNOMIAL, CO(I), I=0,N-1         
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), QZ(1), WE(1), CO(0:*)                            
+      DIMENSION CS(N), QZ(N), WE(N), CO(0:n-1)   
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(n) ::cs,qz,we
+cf2py double precision,intent(out),dimension(0:n-1) :: co 
+                         
       IF (N .EQ. 0) RETURN                                              
                                                                         
           PR = 1.77245385090551588D0                                    
@@ -1953,7 +2130,13 @@ C
 *   CO = FOURIER COEFFICIENTS OF THE POLYNOMIAL, CO(I), I=0,N           
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), VN(0:*), QN(0:*), WT(0:*), CO(0:*)             
+      DIMENSION ET(0:N), VN(0:N), QN(0:N), WT(0:N), CO(0:N) 
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a,b
+cf2py double precision,intent(in),dimension(0:n) :: et,vn,qn,wt
+cf2py double precision,intent(out),dimension(0:n) :: co 
+            
           CO(0) = QN(0)                                                 
       IF (N .EQ. 0) RETURN                                              
                                                                         
@@ -2018,7 +2201,12 @@ C
 *   CO = FOURIER COEFFICIENTS OF THE POLYNOMIAL, CO(I), I=0,N           
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), QN(0:*), WT(0:*), CO(0:*)                      
+      DIMENSION ET(0:N), QN(0:N), WT(0:N), CO(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: et,qn,wt
+cf2py double precision,intent(out),dimension(0:n) :: co 
+                      
           CO(0) = QN(0)                                                 
       IF (N .EQ. 0) RETURN                                              
                                                                         
@@ -2068,7 +2256,12 @@ C
 *   CO = FOURIER COEFFICIENTS OF THE POLYNOMIAL, CO(I), I=0,N           
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION  QN(0:*), CO(0:*)                                       
+      DIMENSION  QN(0:N), CO(0:N)     
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: qn
+cf2py double precision,intent(out),dimension(0:n) :: co 
+                                  
           CO(0) = QN(0)                                                 
       IF (N .EQ. 0) RETURN                                              
                                                                         
@@ -2117,7 +2310,13 @@ C
 *   CO = FOURIER COEFFICIENTS OF THE POLYNOMIAL, CO(I), I=0,N-1         
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), QN(0:*), WT(0:*), CO(0:*)                      
+      DIMENSION ET(0:N-1), QN(0:N-1), WT(0:N-1), CO(0:N-1)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a
+cf2py double precision,intent(in),dimension(0:n-1) :: et,qn,wt
+cf2py double precision,intent(out),dimension(0:n-1) :: co 
+                      
       IF (N .EQ. 0) RETURN                                              
                                                                         
           A1  = A+1.D0                                                  
@@ -2168,7 +2367,13 @@ C
 *   D2Y= VALUE OF THE SECOND DERIVATIVE IN X                            
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*)                                                 
+      DIMENSION CO(0:N) 
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a,b,x
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out) :: y,dy,d2y  
+                                                
           Y   = CO(0)                                                   
           DY  = 0.D0                                                    
           D2Y = 0.D0                                                    
@@ -2222,7 +2427,13 @@ C
 *   D2Y= VALUE OF THE SECOND DERIVATIVE IN X                            
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*)                                                 
+      DIMENSION CO(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: x
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out) :: y,dy,d2y  
+                                                 
           Y   = CO(0)                                                   
           DY  = 0.D0                                                    
           D2Y = 0.D0                                                    
@@ -2272,7 +2483,13 @@ C
 *   D2Y= VALUE OF THE SECOND DERIVATIVE IN X                            
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*)                                                 
+      DIMENSION CO(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: x
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out) :: y,dy,d2y  
+                                                 
           Y   = CO(0)                                                   
           DY  = 0.D0                                                    
           D2Y = 0.D0                                                    
@@ -2320,7 +2537,13 @@ C
 *   D2Y= VALUE OF THE SECOND DERIVATIVE IN X                            
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*)                                                 
+      DIMENSION CO(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a,x
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out) :: y,dy,d2y  
+                                                 
           Y   = CO(0)                                                   
           DY  = 0.D0                                                    
           D2Y = 0.D0                                                    
@@ -2370,7 +2593,13 @@ C
 *   D2Y= VALUE OF THE SECOND DERIVATIVE IN X                            
 **********************************************************************  
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*)                                                 
+      DIMENSION CO(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: x
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out) :: y,dy,d2y  
+                                                 
           Y   = CO(0)                                                   
           DY  = 0.D0                                                    
           D2Y = 0.D0                                                    
@@ -2411,7 +2640,12 @@ C
 *   QW = WEIGHTED INTEGRAL NORM OF THE POLYNOMIAL                       
 ***************************************************************         
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*)                                                 
+      DIMENSION CO(0:N)  
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a,b
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out) :: qw                                                    
                                                                         
           EPS = 1.D-14                                                  
           A1  = A+1.D0                                                  
@@ -2452,7 +2686,11 @@ C
 *   QI = INTEGRAL NORM OF THE POLYNOMIAL                                
 ****************************************************************        
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*)                                                 
+      DIMENSION CO(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out) :: qi                                                   
                                                                         
           EPS = 1.D-14                                                  
           SU = 0.D0                                                     
@@ -2477,7 +2715,11 @@ C
 *   QI = INTEGRAL NORM OF THE POLYNOMIAL                                
 ****************************************************************        
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*)                                                 
+      DIMENSION CO(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out) :: qw,qi                                                    
                                                                         
           EPS = 1.D-14                                                  
           PR = 1.77245385090551588D0                                    
@@ -2529,7 +2771,12 @@ C
 *   QW = WEIGHTED INTEGRAL NORM OF THE POLYNOMIAL                       
 *****************************************************************       
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*)                                                 
+      DIMENSION CO(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out) :: qw                                                 
                                                                         
           EPS = 1.D-14                                                  
           A1  = A+1.D0                                                  
@@ -2562,8 +2809,12 @@ C
 *   QW = WEIGHTED INTEGRAL NORM OF THE POLYNOMIAL                       
 ****************************************************************        
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*)                                                 
-                                                                        
+      DIMENSION CO(0:N)                                                 
+ 
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out) :: qw
+                                                                       
           EPS = 1.D-14                                                  
           PR = 1.33133536380038953D0                                    
           R2 = 1.41421356237309515D0                                    
@@ -2598,7 +2849,12 @@ C
 *   CD2 = COEFFICIENTS OF THE SECOND DERIVATIVE, CD2(I), I=0,N          
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*), CD(0:*), CD2(0:*)                              
+      DIMENSION CO(0:N), CD(0:N), CD2(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: g
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out),dimension(0:n) :: cd,cd2                                
                                                                         
           CD(N)  = 0.D0                                                 
           CD2(N) = 0.D0                                                 
@@ -2638,7 +2894,11 @@ C
 *   CD2 = COEFFICIENTS OF THE SECOND DERIVATIVE, CD2(I), I=0,N          
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*), CD(0:*), CD2(0:*)                              
+      DIMENSION CO(0:N), CD(0:N), CD2(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out),dimension(0:n) :: cd,cd2                                
                                                                         
           CD(N)  = 0.D0                                                 
           CD2(N) = 0.D0                                                 
@@ -2669,7 +2929,11 @@ C
 *   CD2 = COEFFICIENTS OF THE SECOND DERIVATIVE, CD2(I), I=0,N          
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*), CD(0:*), CD2(0:*)                              
+      DIMENSION CO(0:N), CD(0:N), CD2(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out),dimension(0:n) :: cd,cd2                                
                                                                         
           CD(N)  = 0.D0                                                 
           CD2(N) = 0.D0                                                 
@@ -2706,7 +2970,11 @@ C
 *   CD2 = COEFFICIENTS OF THE SECOND DERIVATIVE, CD2(I), I=0,N          
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*), CD(0:*), CD2(0:*)                              
+      DIMENSION CO(0:N), CD(0:N), CD2(0:N)
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out),dimension(0:n) :: cd,cd2                               
                                                                         
           CD(N)  = 0.D0                                                 
           CD2(N) = 0.D0                                                 
@@ -2735,7 +3003,11 @@ C
 *   CD2 = COEFFICIENTS OF THE SECOND DERIVATIVE, CD2(I), I=0,N          
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CO(0:*), CD(0:*), CD2(0:*)                              
+      DIMENSION CO(0:N), CD(0:N), CD2(0:N)    
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: co
+cf2py double precision,intent(out),dimension(0:n) :: cd,cd2                          
                                                                         
           CD(N)  = 0.D0                                                 
           CD2(N) = 0.D0                                                 
@@ -2769,7 +3041,13 @@ C
 *   DQZ = DERIVATIVES OF THE POLYNOMIAL AT THE ZEROES, DQZ(I), I=1,N    
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), DZ(1), QZ(1), DQZ(1)                             
+      DIMENSION CS(N), DZ(N), QZ(N), DQZ(N)    
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a,b
+cf2py double precision,intent(in),dimension(n) :: cs,dz,qz
+cf2py double precision,intent(out),dimension(n) :: dqz
+                         
       IF (N .EQ. 0) RETURN                                              
                                                                         
       DO 1 I=1,N                                                        
@@ -2802,7 +3080,13 @@ C
 *   DQZ = DERIVATIVES OF THE POLYNOMIAL AT THE ZEROES, DQZ(I), I=1,N    
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), QZ(1), DQZ(1)                                    
+      DIMENSION CS(N), QZ(N), DQZ(N)  
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in) :: a
+cf2py double precision,intent(in),dimension(n) :: cs,qz
+cf2py double precision,intent(out),dimension(n) :: dqz
+                                  
       IF (N .EQ. 0) RETURN                                              
                                                                         
       DO 1 J=1,N                                                        
@@ -2845,7 +3129,12 @@ C
 *   DQZ = DERIVATIVES OF THE POLYNOMIAL AT THE ZEROES, DQZ(I), I=1,N    
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), QZ(1), DQZ(1)                                    
+      DIMENSION CS(N), QZ(N), DQZ(N)  
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(n) :: cs,qz
+cf2py double precision,intent(out),dimension(n) :: dqz
+                                  
       IF (N .EQ. 0) RETURN                                              
                                                                         
       DO 1 J=1,N                                                        
@@ -2891,7 +3180,13 @@ C
 *   DQN = DERIVATIVES OF THE POLYNOMIAL AT THE NODES, DQZ(I), I=0,N     
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), VN(0:*), QN(0:*), DQN(0:*)                     
+      DIMENSION ET(0:N), VN(0:N), QN(0:N), DQN(0:N) 
+
+cf2py integer, intent(in) :: n
+cf2py double precision, intent(in) :: a,b
+cf2py double precision,intent(in),dimension(0:n) :: et,vn,qn
+cf2py double precision,intent(out),dimension(0:n) :: dqn
+                    
           DQN(0) = 0.D0                                                 
       IF (N .EQ. 0) RETURN                                              
                                                                         
@@ -2945,10 +3240,15 @@ C
 *   ET  = VECTOR OF THE NODES, ET(I), I=0,N                             
 *   VN  = VALUES OF THE LEGENDRE POLYNOMIAL AT THE NODES, VN(I), I=0,N  
 *   QN  = VALUES OF THE POLYNOMIAL AT THE NODES, QN(I), I=0,N           
-*   DQN = DERIVATIVES OF THE POLYNOMIAL AT THE NODES, DQZ(I), I=0,N     
+*   DQN = DERIVATIVES OF THE POLYNOMIAL AT THE NODES, DQN(I), I=0,N     
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), VN(0:*), QN(0:*), DQN(0:*)                     
+      DIMENSION ET(0:N), VN(0:N), QN(0:N), DQN(0:N)    
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: et,vn,qn
+cf2py double precision,intent(out),dimension(0:n) :: dqn
+                 
           DQN(0) = 0.D0                                                 
       IF (N .EQ. 0) RETURN                                              
                                                                         
@@ -2980,10 +3280,15 @@ C
 *   N   = THE DEGREE OF THE POLYNOMIAL                                  
 *   ET  = VECTOR OF THE NODES, ET(I), I=0,N                             
 *   QN  = VALUES OF THE POLYNOMIAL AT THE NODES, QN(I), I=0,N           
-*   DQN = DERIVATIVES OF THE POLYNOMIAL AT THE NODES, DQZ(I), I=0,N     
+*   DQN = DERIVATIVES OF THE POLYNOMIAL AT THE NODES, DQN(I), I=0,N     
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), QN(0:*), DQN(0:*)                              
+      DIMENSION ET(0:N), QN(0:N), DQN(0:N) 
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: et,qn
+cf2py double precision,intent(out),dimension(0:n) :: dqn
+                             
           DQN(0) = 0.D0                                                 
       IF (N .EQ. 0) RETURN                                              
                                                                         
@@ -3036,10 +3341,16 @@ C
 *   A   = PARAMETER >-1                                                 
 *   ET  = VECTOR OF THE NODES, ET(I), I=0,N-1                           
 *   QN  = VALUES OF THE POLYNOMIAL AT THE NODES, QN(I), I=0,N-1         
-*   DQN = DERIVATIVES OF THE POLYNOMIAL AT THE NODES, DQZ(I), I=0,N-1   
+*   DQN = DERIVATIVES OF THE POLYNOMIAL AT THE NODES, DQN(I), I=0,N-1   
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), QN(0:*), DQN(0:*)                              
+      DIMENSION ET(0:N-1), QN(0:N-1), DQN(0:N-1) 
+
+cf2py integer, intent(in) :: n
+cf2py double precision, intent(in) :: a
+cf2py double precision,intent(in),dimension(0:n-1) :: et,qn
+cf2py double precision,intent(out),dimension(0:n-1) :: dqn
+                            
           DN = DFLOAT(N)                                                
           DQN(0) = (1.D0-DN)*QN(0)/(A+2.D0)                             
       IF (N .EQ. 1) RETURN                                              
@@ -3094,7 +3405,13 @@ C
 *  DMA = DERIVATIVE MATRIX, DMA(I,J), I=0,N  J=0,N                      
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), VN(0:*), DMA(0:NM,0:*)                         
+      DIMENSION ET(0:N), VN(0:N), DMA(0:NM,0:NM)  
+
+cf2py integer,intent(in) :: n,nm
+cf2py double precision, intent(in) :: a
+cf2py double precision,intent(in),dimension(0:n) :: et,vn
+cf2py double precision,intent(out),dimension(0:nm,0:nm) :: dma
+                       
           DMA(0,0) = 0.D0                                               
       IF (N .EQ. 0) RETURN                                              
                                                                         
@@ -3149,7 +3466,12 @@ C
 *  DMA = DERIVATIVE MATRIX, DMA(I,J), I=0,N  J=0,N                      
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), VN(0:*), DMA(0:NM,0:*)                         
+      DIMENSION ET(0:N), VN(0:N), DMA(0:NM,0:NM)     
+
+cf2py integer, intent(in) :: n,nm
+cf2py double precision,intent(in),dimension(0:n) :: et,vn
+cf2py double precision,intent(out),dimension(0:nm,0:nm) :: dma
+                    
           DMA(0,0) = 0.D0                                               
       IF (N .EQ. 0) RETURN                                              
                                                                         
@@ -3185,7 +3507,12 @@ C
 *  DMA = DERIVATIVE MATRIX, DMA(I,J), I=0,N  J=0,N                      
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), DMA(0:NM,0:*)                                  
+      DIMENSION ET(0:N), DMA(0:NM,0:NM)
+
+cf2py integer, intent(in) :: n,nm
+cf2py double precision,intent(in),dimension(0:n) :: et
+cf2py double precision,intent(out),dimension(0:nm,0:nm) :: dma
+                                  
           DMA(0,0) = 0.D0                                               
       IF (N .EQ. 0) RETURN                                              
                                                                         
@@ -3238,7 +3565,13 @@ C
 *  DMA = DERIVATIVE MATRIX, DMA(I,J), I=0,N-1  J=0,N-1                  
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), DMA(0:NM,0:*)                                  
+      DIMENSION ET(0:N-1), DMA(0:NM,0:NM)     
+
+cf2py integer, intent(in) :: n,nm
+cf2py double precision, intent(in) :: a
+cf2py double precision,intent(in),dimension(0:n-1) :: et
+cf2py double precision,intent(out),dimension(0:nm,0:nm) :: dma
+                             
           DN = DFLOAT(N)                                                
           DMA(0,0) = (1.D0-DN)/(A+2.D0)                                 
       IF (N .EQ. 1) RETURN                                              
@@ -3611,7 +3944,13 @@ C
 *  D2SO= SECOND DERIVATIVE OF THE SOLUTION AT THE NODES, D2SO(I), I=0,N 
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION ET(0:*), VN(0:*), FU(0:*), SO(0:*), DSO(0:*), D2SO(0:*) 
+      DIMENSION ET(0:N), VN(0:N), FU(0:N), SO(0:N), DSO(0:N), D2SO(0:N) 
+
+cf2py integer, intent(in) :: n
+cf2py double precision,intent(in),dimension(0:n) :: et,vn,fu
+cf2py double precision,intent(in),dimension(n) :: s1,s2,pa
+cf2py double precision,intent(out),dimension(0:n) :: so,dso,d2so
+
       IF (N .EQ. 0) RETURN                                              
                                                                         
           SO(0) = S1                                                    
@@ -3686,11 +4025,11 @@ C
 *  DGA = DERIVATIVE MATRIX, DGA(I,J), I=1,N  J=1,N                      
 ************************************************************************
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
-      DIMENSION CS(1), DZ(1), DGA(NM,NM)  
+      DIMENSION CS(N), DZ(N), DGA(NM,NM)  
 
 cf2py integer, intent(in) :: n,nm
 cf2py double precision,intent(in),dimension(n) :: cs,dz
-cf2py double precision,intent(out),dimension(n,n) :: dga
+cf2py double precision,intent(out),dimension(nm,nm) :: dga
                               
           DGA(1,1) = 0.D0                                               
       IF (N .LE. 1) RETURN                                              
