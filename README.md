@@ -27,11 +27,11 @@ f2py -c -m --fcompiler=gnu95 pysplib splib.f hermite_form_to_complex_conj.f -lff
 I'm using gfortran, therefore I use --fcompiler=gnu95 switch.  
 
 
-After doing this you get splib.so file.  
+After doing this you get pysplib.so file.  
 
-Then you may use splib in Python:  
+Then you may use pysplib in Python:  
 ```python
-  import splib
+  import pysplib
   splib.gammaf(15)
   87178291200.0
 ...
