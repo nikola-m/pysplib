@@ -36,7 +36,7 @@ After doing this you get pysplib.so file.
 Then you may use pysplib in Python:  
 ```python
   import pysplib
-  splib.gammaf(15)
+  pysplib.gammaf(15)
   87178291200.0
 ...
 ```
