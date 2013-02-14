@@ -16,7 +16,7 @@
       
       a(0) = x(0)
       b(0) = 0.0d0
-      n2 = (n-1)/2
+      n2 = int(ceiling((n-1)/2.))
       do j = 1, n2
         nj = n - j
         a(j) = x(j)
@@ -49,13 +49,13 @@
 !     locals
       integer :: j,nj,n2
 
-      n2 = (n-1)/2
+      n2 = int(ceiling((n-1)/2.))
       do j = 0, n2-1
         nj = n-j-1
         x(j) = dble(q(j))
         x(nj) = -dimag(q(nj))
       enddo
-      if (mod(n,2).ne.0) x(n2) = dble(q(n2)) 
+      x(n2) = dble(q(n2))  
       return
       end
 
@@ -75,12 +75,12 @@
 !     locals
       integer :: j,nj,n2
 
-      n2 = (n-1)/2
+      n2 = int(ceiling((n-1)/2.))
       do j = 0, n2-1
         nj = n-j-1
         x(j) = dble(q(j))
         x(nj) = -dimag(q(j+1))
       enddo
-      if (mod(n,2).ne.0) x(n2) = dble(q(n2)) 
+      x(n2) = dble(q(n2)) 
       return
       end
