@@ -291,19 +291,19 @@ python module pysplib ! in
             double precision dimension(n),intent(in) :: cs
             double precision dimension(n),intent(in),depend(n) :: qz
             double precision dimension(n),intent(in),depend(n) :: we
-            double precision dimension(n),intent(in),depend(n) :: co
+            double precision dimension(n),intent(out),depend(n) :: co
         end subroutine cojaga
         subroutine colega(n,cs,qz,we,co) ! in :pysplib:splib.f
             integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
             double precision dimension(n),intent(in) :: cs
             double precision dimension(n),intent(in),depend(n) :: qz
             double precision dimension(n),intent(in),depend(n) :: we
-            double precision dimension(n),intent(in),depend(n) :: co
+            double precision dimension(n),intent(out),depend(n) :: co
         end subroutine colega
         subroutine cochga(n,qz,co) ! in :pysplib:splib.f
             integer optional,intent(in),check(len(qz)>=n),depend(qz) :: n=len(qz)
             double precision dimension(n),intent(in) :: qz
-            double precision dimension(n),intent(in),depend(n) :: co
+            double precision dimension(n),intent(out),depend(n) :: co
         end subroutine cochga
         subroutine colaga(n,a,cs,qz,we,co) ! in :pysplib:splib.f
             integer optional,intent(in),check(len(cs)>=n),depend(cs) :: n=len(cs)
