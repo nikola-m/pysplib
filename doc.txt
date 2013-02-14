@@ -42,9 +42,9 @@ Functions:
   qw,qs,qm = nojagl(a,b,vn,qn,wt,n=(len(vn)-1))
   qi,qs,qm = nolegl(vn,qn,wt,n=(len(vn)-1))
   qw,qi,qs,qm = nochgl(qn,wk,n=(len(qn)-1))
-  cojaga(a,b,cs,qz,we,co,n=len(cs))
-  colega(cs,qz,we,co,n=len(cs))
-  cochga(qz,co,n=len(qz))
+  co = cojaga(a,b,cs,qz,we,n=len(cs))
+  co = colega(cs,qz,we,n=len(cs))
+  co = cochga(qz,n=len(qz))
   co = colaga(a,cs,qz,we,n=len(cs))
   co = cohega(cs,qz,we,n=len(cs))
   co = cojagl(a,b,et,vn,qn,wt,n=(len(et)-1))
@@ -87,4 +87,3 @@ Functions:
   x = complex_to_hermite(q,n=len(q))
   x = complex_to_hermite_r2c(q,n=len(q))
 .
-
