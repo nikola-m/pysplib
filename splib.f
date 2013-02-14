@@ -288,7 +288,8 @@ cf2py intent(out) :: y,dy,d2y
          D2Y = 0.D0                                                     
       IF (N .EQ. 1) RETURN                                              
                                                                         
-         YP=1.D0                                                        
+         YP=1.D0 
+         YPM=1.D0                                                       
       DO 1 K=2,N                                                        
          DK = DFLOAT(K-1)                                               
          YM  = Y                                                        
@@ -1879,7 +1880,7 @@ C
 
 cf2py integer, intent(in) :: n
 cf2py double precision,intent(in),dimension(n) :: cs,qz,we
-cf2py double precision,intent(in),dimension(0:n-1) :: co
+cf2py double precision,intent(out),dimension(0:n-1) :: co
                            
       IF (N .EQ. 0) RETURN                                              
                                                                         
@@ -1943,7 +1944,7 @@ C
 
 cf2py integer, intent(in) :: n
 cf2py double precision,intent(in),dimension(n) :: cs,qz,we
-cf2py double precision,intent(in),dimension(0:n-1) :: co
+cf2py double precision,intent(out),dimension(0:n-1) :: co
                            
       IF (N .EQ. 0) RETURN                                              
                                                                         
@@ -1990,7 +1991,7 @@ C
 
 cf2py integer, intent(in) :: n
 cf2py double precision,intent(in),dimension(n) :: qz
-cf2py double precision,intent(in),dimension(0:n-1) :: co
+cf2py double precision,intent(out),dimension(0:n-1) :: co
                                        
       IF (N .EQ. 0) RETURN                                              
                                                                         
@@ -3627,7 +3628,7 @@ C
 
 c     fftw3 related
       integer*8 :: plan_forward
-      double complex, dimension(0:n-1) :: out
+      double complex, dimension(0:n-1) :: delt
 
 cf2py integer, intent(in) :: n
 cf2py double precision,intent(in),dimension(n) :: qz
@@ -3641,34 +3642,32 @@ cf2py double precision,intent(out),dimension(0:n-1) :: co
           CO(0) = QZ(1)/DN                                              
       IF(N .EQ. 1) RETURN                                               
                                                                         
-          N2 = N/2                                                      
+          N2 = N/2                                                    
           C  = 2.D0/DSQRT(DN)                                           
           SN = DFLOAT(1+4*N2-2*N)                                       
           CO(N-N2-1) = QZ(N)                                            
       DO 1 I=1,N2                                                       
           CO(I-1) = QZ(2*I-1)                                           
           CO(N-I) = QZ(2*I)                                             
-1     CONTINUE                                                          
-                                                                        
-c      CALL C06EAF(CO,N,IFAIL)                                           
-c      IF (IFAIL .NE. 0) THEN                                            
-c      WRITE(*,*) 'IFAIL IS NOT ZERO IN SUBROUTINE C06EAF'               
-c      ENDIF   
+1     CONTINUE
 
+      delt=cmplx(co,0.0d0)
 c
 c  Make a plan for the FFT, and forward transform the data.
 c 
-      call dfftw_plan_dft_r2c_1d_ ( plan_forward, n, CO, out,
-     &     fftw_forward, fftw_estimate )
+      call dfftw_plan_dft_1d_ ( plan_forward, n, delt, delt,
+     &                          fftw_forward, fftw_estimate )
+
       call dfftw_execute_ ( plan_forward )
 
 c  Convert back to Herite form
-      call complex_to_hermite_r2c(out,n,CO)
+      call complex_to_hermite(delt,n,co)
 
 c  Scale the sequence with 1/sqrt(n)
-      do j=0,n-1
-        CO(j) = CO(j)/sqrt(dble(n))
-      enddo
+      SCAL=1./SQRT(DBLE(N))
+      DO J=0,N-1
+        CO(J) = CO(J)*SCAL
+      ENDDO
                                                                
           CO(0) = .5D0*C*CO(0)                                          
       IF (2*N2 .EQ. N) THEN                                             
@@ -3703,59 +3702,49 @@ C
 *  QN  = VALUES OF THE POLYNOMIAL AT THE NODES, QN(I), I=0,N            
 *  CO  = FOURIER COEFFICIENTS OF THE POLYNOMIAL, CO(I), I=0,N           
 ************************************************************************
-      IMPLICIT DOUBLE PRECISION (A-H,O-Z)                               
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z) 
+      include "fftw3.f"       
       DIMENSION QN(0:N), CO(0:N)    
 
 c     fftw3 related
-      integer*8 :: plan_forward
-      double complex, dimension(0:n) :: in,out
+      integer*8 :: plan_backward
+      double complex delt(0:n-1)
+      double precision gam(0:n-1)
 
 cf2py integer, intent(in) :: n
 cf2py double precision,intent(in),dimension(0:n) :: qn
 cf2py double precision,intent(out),dimension(0:n) :: co
                                     
-      IF(N .EQ. 0) RETURN                                               
-                                                                        
-          PI = 3.14159265358979323846D0                                 
-          DN = DFLOAT(N)                                                
-          N2 = N/2                                                      
-          SN = DFLOAT(1+4*N2-2*N)                                       
-          S1 = .5D0*(QN(0)+QN(N))                                       
-          S2 = .5D0*(SN*QN(0)+QN(N))                                    
-          CO(0) = S1                                                    
-          CO(N) = S2                                                    
-      IF(N .EQ. 1) RETURN                                               
-                                                                        
-          CO(0) = QN(0)                                                 
-      IF (2*N2 .EQ. N) THEN                                             
-          CO(N2) = QN(N)                                                
-      ENDIF                                                             
-      IF(N .EQ. 2) GOTO 2                                               
-                                                                        
-      DO 1 I=1,N-N2-1                                                   
-          I2 = 2*I                                                      
-          CO(I) = QN(I2)                                                
-          CO(N-I) = QN(I2-1)-QN(I2+1)                                   
-1     CONTINUE                                                          
-                                                                        
-c2     CALL C06EBF(CO,N,IFAIL)                                           
-c      IF (IFAIL .NE. 0) THEN                                            
-c      WRITE(*,*) 'IFAIL IS NOT ZERO IN SUBROUTINE C06EBF'               
-c      ENDIF                                                             
-   
+      IF(N .EQ. 0) RETURN  
+      
+      PI = 3.14159265358979323846D0                                 
+      DN = DBLE(N)                                                
+      N2 = N/2
+      SN = DFLOAT(1+4*N2-2*N)                                       
+      S1 = .5D0*(QN(0)+QN(N))                                       
+      S2 = .5D0*(SN*QN(0)+QN(N))                                    
+      CO(0) = S1                                                    
+      CO(N) = -S2                                                    
+      IF(N .EQ. 1) RETURN 
+      
+      DELT(0) = CMPLX(QN(0),0.0D0) 
+      DO J=1,N-N2-1
+        J2=2*J
+        DELT(J)=CMPLX(QN(J2),(QN(J2+1)-QN(J2-1)))
+      ENDDO
+      IF (MOD(N,2).EQ.0) DELT(N2)=QN(N)
+      DO J=N2+1,N-1
+        J2=2*J
+        DELT(J)=CMPLX(QN(2*N-J2),(QN(2*N-J2-1)-QN(2*N-J2+1)))
+      ENDDO
 c
-c  make a plan for the fft, and forward transform the data.
+c backward fft bcause sign in the exponent is plus
 c
-2     call hermite_to_complex(CO,n+1,in)
-      call dfftw_plan_dft_1d_ ( plan_forward, n+1, in, out,
-     &     fftw_forward, fftw_estimate )
+      call dfftw_plan_dft_c2r_1d_ ( plan_backward, n, delt, gam,
+     &                          fftw_backward, fftw_estimate )
 
-      call dfftw_execute_ ( plan_forward )
+      call dfftw_execute_ ( plan_backward )
 
-      do j=0,n
-        CO(j) = dble(out(j))/sqrt(dble(n+1))
-      enddo
-                                                                     
           SJ = -1.D0                                                    
       DO 3 J=1,N-1                                                      
           S1 = S1+QN(J)                                                 
@@ -3767,28 +3756,23 @@ c
           C  = .5D0/DSQRT(DN)                                           
       IF (2*N2 .EQ. N) THEN                                             
           CO(N2) = 2.D0*C*((-1.D0)**N2)*CO(N2)                          
-      ENDIF                                                             
-      IF(N .EQ. 2) RETURN                                               
-                                                                        
-          SM = -1.D0                                                    
-      DO 4 M=1,N-N2-1                                                   
-          AR = PI*DFLOAT(M)/DN                                          
-          SI = .5D0/DSIN(AR)                                            
-          V1 = CO(M)*(1.D0+SI)+CO(N-M)*(1.D0-SI)                        
-          V2 = CO(M)*(1.D0-SI)+CO(N-M)*(1.D0+SI)                        
-          CO(M) = C*SM*V1                                               
-          CO(N-M) = C*SM*SN*V2                                          
-          SM = -SM                                                      
-4     CONTINUE                                                          
-   
-!
-!  discard the information associated with the plans.
-!
-      call dfftw_destroy_plan_ ( plan_forward )
+      ENDIF 
+     
+      SM = -1.D0
+      DO J=1,N-1
+          SI=1/(2.*SIN(PI*J/DN))
+          CO(J)=0.5D0*SM/DN*(GAM(J)*(1.+SI)+GAM(N-J)*(1.-SI))
+          SM=-SM
+      ENDDO
+      
+c
+c  discard the information associated with the plans.
+c
+      call dfftw_destroy_plan_ ( plan_backward )
 
                                                                      
       RETURN                                                            
-      END                                                               
+      END
 C                                                                       
       SUBROUTINE FVCHGL(N,CO,QN)                                        
 *******************************************************************     
@@ -3805,7 +3789,8 @@ C
 
 c     fftw3 related
       integer*8 :: plan_backward
-      double complex, dimension(0:n) :: in,out
+      DOUBLE COMPLEX DELT(0:n-1)
+      DOUBLE PRECISION gam(0:n-1)
  
 cf2py integer, intent(in) :: n
 cf2py double precision,intent(in),dimension(0:n) :: co
@@ -3813,79 +3798,87 @@ cf2py double precision,intent(out),dimension(0:n) :: qn
                                   
       IF(N .EQ. 0) RETURN                                               
                                                                         
-          PI = 3.14159265358979323846D0                                 
-          DN = DFLOAT(N)                                                
-          N2 = N/2                                                      
-          SN = DFLOAT(1+4*N2-2*N)                                       
-          S1 = CO(0)+SN*CO(N)                                           
-          S2 = CO(0)+CO(N)                                              
-          QN(0) = S1                                                    
-          QN(N) = S2                                                    
-      IF(N .EQ. 1) RETURN                                               
-                                                                        
-          QN(0) = 2.D0*CO(0)                                            
-      IF (2*N2 .EQ. N) THEN                                             
-          QN(N2) = 2.D0*CO(N)                                           
-      ENDIF                                                             
-      IF(N .EQ. 2) GOTO 2                                               
-                                                                        
-      DO 1 I=1,N-N2-1                                                   
-          I2 = 2*I                                                      
-          QN(N-I) = CO(I2+1)-CO(I2-1)                                   
-          QN(I) = CO(I2)                                               
-1     CONTINUE                                                          
-      IF (2*N2 .NE. N) THEN                                             
-          QN(N2+1) = 2.D0*CO(N)-CO(N-2)                                 
-      ENDIF                                                             
-                                                                        
-c2     CALL C06EBF(QN,N,IFAIL)                                           
-c      IF (IFAIL .NE. 0) THEN                                            
-c      WRITE(*,*) 'IFAIL IS NOT ZERO IN SUBROUTINE C06EBF'               
-c      ENDIF                                                             
+      PI = 3.14159265358979323846D0                                 
+      DN = DFLOAT(N)                                                
+      N2 = N/2                                 
+      S1 = CO(0)+CO(N)                                           
+      S2 = CO(0)-CO(N)                                              
+      QN(0) = S1                                                    
+      QN(N) = S2
+      IF(N .EQ. 1) RETURN
 
-c
-c  make a plan for the ifft, and backward transform the data.
-c
-2     call hermite_to_complex(QN,n+1,in)
-      call dfftw_plan_dft_1d_ ( plan_backward, n+1, in, out,
-     &     fftw_backward, fftw_estimate )
+      SM = 1.D0
+      QN(0)=0.0D0
+      QN(N)=0.0D0
+      DO J=0,N
+        QN(0)=QN(0)+SM*CO(J)
+        QN(N)=QN(N)+CO(J)
+        SM=-SM
+      ENDDO  
+                                                
+
+      DELT(0)=CMPLX(2*CO(0),0.0D0)
+
+      IF(2*N2.EQ.N) THEN
+
+        DO J=1,N2-1
+          J2=2*J
+          DELT(J)=CMPLX(CO(J2),(CO(J2-1)-CO(J2+1)))
+        ENDDO
+        DELT(N2) =CMPLX(2*CO(N),0.0D0)
+        DO J=N2+1,N-1
+          J2=2*J
+          DELT(J)=CMPLX(CO(2*N-J2),(CO(2*N-J2-1)-CO(2*N-J2+1)))
+        ENDDO 
+
+      ELSE
+
+        DO J=1,(N-3)/2
+          J2=2*J
+          DELT(J)=CMPLX(CO(J2),(CO(J2-1)-CO(J2+1)))
+        ENDDO
+        DELT((N-1)/2)=CMPLX(CO(N-1),(CO(N-2)-2*CO(N)))
+        DELT((N+1)/2)=CMPLX(CO(N-1),(2*CO(N)-CO(N-2)))
+        DO J=(N+3)/2,N-1
+          J2=2*J
+          DELT(J)=CMPLX(CO(2*N-J2),(CO(2*N-J2-1)-CO(2*N-J2+1)))
+        ENDDO 
+
+      ENDIF 
+
+      call dfftw_plan_dft_c2r_1d_ ( plan_backward, n, delt, gam,
+     &                          fftw_backward, fftw_estimate )
 
       call dfftw_execute_ ( plan_backward )
-
-      do j=0,n
-        QN(j) = dble(out(j))/dble(n+1)
-      enddo
-                                                                            
-          SJ = -1.D0                                                    
-      DO 3 J=1,N-1                                                      
-          S1 = S1+SJ*CO(J)                                              
-          S2 = S2+CO(J)                                                 
-          SJ = -SJ                                                      
-3     CONTINUE                                                          
-          QN(0) = S1                                                    
-          QN(N) = S2                                                    
-          C  = .25D0*DSQRT(DN)                                          
+                                         
       IF (2*N2 .EQ. N) THEN                                             
-          QN(N2) = 2.D0*C*QN(N2)                                        
+          QN(N2) = 0.5D0*gam(N2)                                        
       ENDIF                                                             
-      IF(N .EQ. 2) RETURN                                               
-                                                                        
-      DO 4 M=1,N-N2-1                                                   
+      IF(N .EQ. 2) RETURN
+
+      C  = .25D0
+      DO 4 M=1,N-N2-1                                                 
           AR = PI*DFLOAT(M)/DN                                          
           SI = .5D0/DSIN(AR)                                            
-          V1 = QN(M)*(1.D0+SI)+QN(N-M)*(1.D0-SI)                        
-          V2 = QN(M)*(1.D0-SI)+QN(N-M)*(1.D0+SI)                        
+          V1 = GAM(M)*(1.D0+SI)+GAM(N-M)*(1.D0-SI)
+          V2 = GAM(N-M)*(1.D0+SI)+GAM(M)*(1.D0-SI)
           QN(M) = C*V1                                                  
           QN(N-M) = C*V2                                                
-4     CONTINUE                                                          
- 
+4     CONTINUE 
+
+C.....Also a valid way to do that:
+C      DO J=1,N-1
+C         SI=1/(2.*SIN(PI*J/DN))
+C         QN(J)=0.25D0*(GAM(J)*(1.+SI)+GAM(N-J)*(1.-SI))
+C      ENDDO                                        
+
 c
 c  discard the information associated with the plans.
 c
       call dfftw_destroy_plan_ ( plan_backward )
-                                                                       
-      RETURN                                                            
-      END                                                               
+
+      RETURN
+      END                                                            
 C                                                                       
       SUBROUTINE FDCHGL(N,QN,CD,DQN)                                    
 *********************************************************************   
