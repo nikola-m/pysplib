@@ -825,6 +825,7 @@ C
 ****************************************************************        
 *   COMPUTES THE WEIGHTS RELATIVE TO THE JACOBI GAUSS FORMULA           
 *   N  = ORDER OF THE FORMULA                                           
+
 *   A  = PARAMETER > -1                                                 
 *   B  = PARAMETER > -1                                                 
 *   CS = ZEROES OF THE JACOBI POLYNOMIAL, CS(I), I=1,N                  
@@ -1911,6 +1912,7 @@ cf2py double precision,intent(out),dimension(0:n-1) :: co
           CC = 2.D0*DK+AB                                               
           C1 = 2.D0*DK*(DK+AB)*(CC-2.D0)                                
           C2 = (CC-1.D0)*(CC-2.D0)*CC                                   
+
           C3 = (CC-1.D0)*(A-B)*AB                                       
           C4 = 2.D0*(DK+A-1.D0)*CC*(DK+B-1.D0)                          
           YM = Y                                                        
@@ -3628,7 +3630,7 @@ C
 
 c     fftw3 related
       integer*8 :: plan_forward
-      double complex, dimension(0:n-1) :: delt
+      double complex, dimension(0:n-1) :: gam
 
 cf2py integer, intent(in) :: n
 cf2py double precision,intent(in),dimension(n) :: qz
@@ -3651,49 +3653,39 @@ cf2py double precision,intent(out),dimension(0:n-1) :: co
           CO(N-I) = QZ(2*I)                                             
 1     CONTINUE
 
-      delt=cmplx(co,0.0d0)
 c
 c  Make a plan for the FFT, and forward transform the data.
 c 
-      call dfftw_plan_dft_1d_ ( plan_forward, n, delt, delt,
-     &                          fftw_forward, fftw_estimate )
-
+      call dfftw_plan_dft_r2c_1d_ ( plan_forward, n, co, gam,
+     &                              fftw_estimate )
       call dfftw_execute_ ( plan_forward )
-
-c  Convert back to Herite form
-      call complex_to_hermite(delt,n,co)
-
-c  Scale the sequence with 1/sqrt(n)
-      SCAL=1./SQRT(DBLE(N))
-      DO J=0,N-1
-        CO(J) = CO(J)*SCAL
-      ENDDO
-                                                               
-          CO(0) = .5D0*C*CO(0)                                          
-      IF (2*N2 .EQ. N) THEN                                             
-          CO(N2) = C*((-1.D0)**N2)*CO(N2)/R2                            
-      ENDIF                                                             
-      IF (N .EQ. 2) RETURN                                              
+      
+      co(0) = 1.0D0/dble(n)*dble(gam(0))
+      IF(2*N2 .eq. N) THEN
+        co(n2) = 2.0D0/dble(n)*((-1.D0)**n2)*dble(gam(n2))/r2
+      ENDIF
+                                                           
+      IF (N .GE. 2) THEN                                             
           SM = -1.D0                                                    
-      DO 2 M=1,N-N2-1                                                   
+      DO 2 M=1,N-N2-1                                                  
           AR = PH*DFLOAT(M)/DN                                          
           CS = DCOS(AR)                                                 
-          SI = DSIN(AR)                                                 
-          V1 = C*SM*(CO(M)*CS+CO(N-M)*SI)                               
-          V2 = C*SM*SN*(CO(M)*SI-CO(N-M)*CS)                            
-          CO(M) = V1                                                    
-          CO(N-M) = V2                                                  
-          SM = -SM                                                      
+          SI = DSIN(AR)                                                
+          V1 = 2./dble(n)*SM*(dble(gam(M))*cs+dimag(gam(M))*si)   
+          SM = -SM
+          V2 = 2./dble(n)*SM*SN*(dimag(gam(M))*cs-dble(gam(M))*si)
+          CO(M) = V1
+          CO(N-M) = V2
 2     CONTINUE                                                          
-      
+      ENDIF
 c
 c  Release the memory associated with the plans.
 c
       call dfftw_destroy_plan_ ( plan_forward )
                                                                   
       RETURN                                                            
-      END                                                               
-C                                                                       
+      END   
+C                                                                    
       SUBROUTINE FCCHGL(N,QN,CO)                                        
 ************************************************************************
 *  COMPUTES USING FFT THE CHEBYSHEV FOURIER COEFFICIENTS OF A POLYNOMIAL
