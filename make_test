@@ -1,2 +1,2 @@
 #$/bin/bash
-gfortran test_fft_splib.f90 splib.f hermite_form_to_complex_conj.f -lfftw3
+gfortran test_fft_splib.f90 splib.f -lfftw3
