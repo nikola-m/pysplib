@@ -83,7 +83,4 @@ Functions:
   cd,dqn = fdchgl(qn,n=(len(qn)-1))
   so,dso,d2so = edlegl(et,vn,fu,s1,s2,pa,n=(len(et)-1))
   dga = dmlega(nm,cs,dz,n=len(cs))
-  q = hermite_to_complex(x,n=len(x))
-  x = complex_to_hermite(q,n=len(q))
-  x = complex_to_hermite_r2c(q,n=len(q))
 .
