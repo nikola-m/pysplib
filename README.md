@@ -4,7 +4,7 @@ This is pysplib - a Python library for spectral methods.
 
 --------------
 Fortran code on which it is based is written by Daniele Funaro in 1994.
-You may find the original source code at:
+You may find the original source code at:  
 cdm.unimo.it/home/matematica/funaro.daniele/splib.txt
 
 
@@ -50,4 +50,9 @@ For question write to:
 Nikola Mirkov   
 email:  
 nmirkov@vinca.rs  
-largeddysimulation@gmail.com 
+largeddysimulation@gmail.com  
+  
+[![githalytics.com
+alpha](https://cruel-carlota.pagodabox.com/3523d5840db5d0347b41d8003e5ceabf
+"githalytics.com")](http://githalytics.com/nikola-m/pysplib)  
+
