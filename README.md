@@ -35,7 +35,8 @@ cp pysplib.so examples/
   
 And finally run examples:  
 ```
-python ex1.py
+python ex1.py  
+...
 ```   
   
 You may use pysplib by importing it in Python:  
