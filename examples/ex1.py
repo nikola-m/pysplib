@@ -1,5 +1,13 @@
 #!/usr/bin/env python
-
+#
+# Purpose:
+#     Solving two point BVP using Legendre polynomial collocation.
+# Problem being solved: 
+#    -d2U/dX2 + tau*U = f,  for x in [-1,1]
+# Dirichlet boundary conditions: 
+#     U(-1) = sig1; U(1) = sig2
+# Here we set f=1., tau=1., sig1=sig2=0.
+#
 from pysplib import *
 import numpy as np
 from scipy.linalg import solve
