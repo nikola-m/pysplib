@@ -28,9 +28,18 @@ f2py -c -m --fcompiler=gnu95 pysplib splib.f -lfftw3
 I'm using gfortran, therefore I use --fcompiler=gnu95 switch.  
 
 
-After doing this you get pysplib.so file.  
+After doing this you get pysplib.so file. Copy it to ```examples``` subdirectory:  
+```
+cp pysplib.so examples/
+```  
+  
+And finally run examples:  
+```
+python ex1.py
+```   
+  
+You may use pysplib by importing it in Python:  
 
-Then you may use pysplib in Python:  
 ```python
   import pysplib
   pysplib.gammaf(15)
@@ -38,6 +47,9 @@ Then you may use pysplib in Python:
 ...
 ```
   
+Have fun!  
+  
+
 # Licence:    
 Available under GNU General Public License version 3  
   
